@@ -1,5 +1,3 @@
-// color options are blue, gray, red, green, yellow, purple, indigo, pink
-
 const projects = [
     {
       name: "Stud.AI",
@@ -39,7 +37,7 @@ const projects = [
       image: "./projectimgs/StudAI.png",
       alt: "Personal Website Image",
       source_code_link: "https://github.com/Aditya-Bang/final_personal_website_2",
-      demo: "NULL",
+      demo: "#",
     },
 ];
 

@@ -1,0 +1,134 @@
+tailwind.config.js
+
+backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+
+fontFamily: {
+        quantico: ['var(--font-quantico)'],
+      },
+
+
+layout.js font stuff
+
+import { Quantico } from "next/font/google";
+import "./globals.css";
+
+const quantico = Quantico({
+  subsets: ["latin"],
+  display: 'swap',
+  weight: '400',
+});
+
+export const metadata = {
+  title: "Aditya Bang's Personal Website",
+  description: "Aditya Bang's Personal Website",
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className={`${quantico.className}`}>
+        {children}
+      </body>
+    </html>
+  );
+}
+
+
+Contact Me from
+// bg-gradient-to-r from-pink-500 to-teal-500 hover:to-primary-800
+
+
+ProjectCard
+
+variants={fadeIn("up", "spring", index * 0.5, 0.75)}
+
+
+// projectcard2
+// <div className='text-white text-xs font-bold bg-yellow-500 border-4 border-yellow-600 inline-block rounded-full p-2'>
+//                         MongoDB
+//                     </div>
+
+
+// "use client";
+// // convert github thing to an link thing so it can be a server component
+
+// import React from 'react'
+
+// const ProjectCard2 = () => {
+//     return (
+//         <div>
+//             <div className="max-w-sm border border-gray-400 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 container">
+//                 <a href="#">
+//                     <img className="rounded-t-lg" src="./projectimgs/carrent.png" alt="" />
+//                 </a>
+
+//                 <a href='https://github.com/' target="_blank" className=''>
+//                     <img
+//                         src='./assets/github.png'
+//                         alt='source code'
+//                         className='w-10 h-10'
+//                     />
+//                 </a>
+
+                
+
+//                 <div className="p-5">
+//                     <a href="#">
+//                         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Stud.AI</h5>
+//                     </a>
+//                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+//                     <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+//                         Read more
+//                         <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+//                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+//                         </svg>
+//                     </a>
+
+
+
+
+
+
+//                     <div className="flex flex-wrap gap-2">
+//                         <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Default</span>
+//                         <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300">Dark</span>
+//                         <span className="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Red</span>
+//                         <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Green</span>
+//                         <span className="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Yellow</span>
+//                         <span className="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300">Indigo</span>
+//                         <span className="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300">Purple</span>
+//                         <span className="bg-pink-100 text-pink-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">Pink</span>
+//                     </div>
+
+
+
+//                 </div>
+//             </div>
+//         </div>
+//     )
+// }
+
+// export default ProjectCard2
+
+// <div className="flex flex-wrap gap-2 mt-2">
+//                         <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Default</span>
+//                         <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300">Dark</span>
+//                         <span className="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Red</span>
+//                         <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Green</span>
+//                         <span className="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Yellow</span>
+//                         <span className="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300">Indigo</span>
+//                         <span className="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300">Purple</span>
+//                         <span className="bg-pink-100 text-pink-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">Pink</span>
+//                     </div>
+
+
+// <div class="bg-gray-400 w-96 h-96 relative z-0">
+//                 <p class="italic text-bold bd-red-100 font-serif">Map</p>
+//                 <div class="absolute inset-0 flex justify-center items-center z-10">
+//                     <p class="text-2xl font-bold">This should be on top of the map</p>
+//                 </div>
+//             </div>
