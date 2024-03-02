@@ -4,22 +4,28 @@ import React from 'react'
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from 'react';
+import Link from 'next/link';
 
 const links = [
     {
         name: "Home",
+        link: "/",
     },
     {
         name: "About",
+        link: "/about",
     },
     {
         name: "Qualifications",
+        link: "/qualifications",
     },
     {
         name: "Projects",
+        link: "/projects",
     },
     {
         name: "Contact",
+        link: "/contact",
     },
 ]
 
@@ -38,7 +44,7 @@ const Navbar = () => {
                                 onMouseEnter={() => setHoverIndex(index)}
                                 onMouseLeave={() => setHoverIndex(null)}
                             >
-                                <div className='z-20'>{link.name}</div>
+                                <Link href={link.link} className='z-20'>{link.name}</Link>
                                 <AnimatePresence>
                                     {hoverIndex === index && (
                                         <motion.span
