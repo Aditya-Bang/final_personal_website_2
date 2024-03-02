@@ -18,6 +18,13 @@ module.exports = {
           },
         },
       },
+      colors: {
+        'testcol': '#281556',
+      },
+      boxShadow: {
+        'lg-invert':
+          '0 10px 30px -3px rgba(255, 255, 255, 0.2), 0 4px 6px -2px rgba(255, 255, 255, 0.05)',
+      },
     },
   },
   plugins: [],

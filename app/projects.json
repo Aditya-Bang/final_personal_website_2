@@ -38,5 +38,23 @@
         "alt": "Personal Website Image",
         "source_code_link": "https://github.com/Aditya-Bang/final_personal_website_2",
         "demo": ""
+    },
+    {
+        "name": "CreatePage",
+        "description": "Create our own webpages.",
+        "tags": [
+            {
+                "name": "Flask",
+                "color": "green"
+            },
+            {
+                "name": "SQLite",
+                "color": "pink"
+            }
+        ],
+        "image": "./projectimgs/StudAI.png",
+        "alt": "CreatePage Project Image",
+        "source_code_link": "https://github.com/Aditya-Bang/CreatePage-Project",
+        "demo": ""
     }
 ]

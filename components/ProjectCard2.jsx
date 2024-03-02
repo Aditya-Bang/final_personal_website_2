@@ -2,8 +2,8 @@ import React from 'react'
 
 const ProjectCard2 = (props) => {
     return (
-        <div className='p-4'>
-            <div className="max-w-64 border border-gray-400 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative">
+        <div className=''>
+            <div className="max-w-64 z-10 border-gray-800 rounded-lg shadow shadow-gray-800 dark:bg-[#1f1325] dark:border-gray-700 relative">
                 <img className="rounded-t-lg" src={props.image} alt={props.alt} />
 
                 <a href={props.source_code_link} target="_blank" className='absolute rounded-full bg-black border-2 border-black top-0 right-0 m-1 h-12 w-12'>
@@ -17,7 +17,7 @@ const ProjectCard2 = (props) => {
                 {props.demo ?
                     <a href={props.demo} target="_blank" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 absolute top-0 left-0 m-2 mt-3">
                         Demo
-                        <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
                         </svg>
                     </a> : <div />}
