@@ -23,7 +23,7 @@ module.exports = {
       },
       boxShadow: {
         'lg-invert':
-          '0 10px 30px -3px rgba(255, 255, 255, 0.2), 0 4px 6px -2px rgba(255, 255, 255, 0.05)',
+          '0 10px 30px -3px rgba(255, 255, 255, 0.2), 0 10px 6px -20px rgba(255, 255, 255, 0.05)',
       },
     },
   },

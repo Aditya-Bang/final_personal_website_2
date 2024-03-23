@@ -6,11 +6,14 @@ import { useEffect, useState } from "react";
 import IntroLoadingScreen from '@/components/IntroLoadingScreen';
 import IntroLoadingAnimation from '@/components/IntroLoadingAnimation';
 
+import IntroHeader from '@/components/IntroHeader';
+
 const ETscale = 100;
 
 const LoadingTest = () => {
     const [textData, setTextData] = useState(null);
     const [earthData, setEarthData] = useState(null);
+    const [mountIntroHeader, setMountIntroHeader] = useState(false);
 
 
     useEffect(() => {
@@ -67,11 +70,21 @@ const LoadingTest = () => {
             loadEarth();
         }, 400);
 
+        setTimeout(() => {
+            setMountIntroHeader(true);
+        }, 12500)
+
     }, [])
 
     return (
         <div>
-            {textData && earthData ? <IntroLoadingAnimation earthModel={earthData} textModel={textData} /> : <IntroLoadingScreen />}
+            {textData && earthData ?
+                <div>
+                    <IntroLoadingAnimation earthModel={earthData} textModel={textData} animationPlayed={false} />
+                    {mountIntroHeader ? <IntroHeader /> : <div/>}
+                </div>
+                :
+                <IntroLoadingScreen />}
         </div>
 
     )
