@@ -13,10 +13,41 @@ const ETscale = 100;
 const LoadingTest = () => {
     const [textData, setTextData] = useState(null);
     const [earthData, setEarthData] = useState(null);
-    const [mountIntroHeader, setMountIntroHeader] = useState(false);
+    const [animationPlayed, setAnimationPlayed] = useState(false);
 
 
     useEffect(() => {
+        const fetchAnimationPlayed = async () => {
+            try {
+                const sessionStorageAnimationPlayed = sessionStorage.getItem('animationPlayed');
+                const animationPlayedBurner = sessionStorageAnimationPlayed ? sessionStorageAnimationPlayed : 'false';
+                console.log(animationPlayedBurner);
+
+                if (animationPlayedBurner == 'true') {
+
+                    if (!textData) loadText2();
+                    if (!earthData) loadEarth();
+                    setAnimationPlayed(true);
+
+                }
+                else {
+                    sessionStorage.setItem('animationPlayed', 'true');
+
+                    setTimeout(() => {
+                        if (!textData) loadText2();
+                        if (!earthData) loadEarth();
+                    }, 400);
+
+                    setTimeout(() => {
+                        setAnimationPlayed('true');
+                    }, 12500)
+                }
+
+            } catch (error) {
+                console.error('Error fetching animationPlayed:', error);
+            }
+        }
+
         function loadText2() {
 
             const textLoader = new GLTFLoader();
@@ -62,29 +93,42 @@ const LoadingTest = () => {
                     console.log('An error happened', error);
                 }
             );
-
         }
 
-        setTimeout(() => {
-            loadText2();
-            loadEarth();
-        }, 400);
-
-        setTimeout(() => {
-            setMountIntroHeader(true);
-        }, 12500)
+        fetchAnimationPlayed();
 
     }, [])
 
+    const replayAnimation = () => {
+        console.log("Replaying Animation");
+        sessionStorage.setItem('animationPlayed', 'false')
+        setAnimationPlayed('false');
+    }
+
     return (
         <div>
-            {textData && earthData ?
+            <button className='text-white absolute z-50' onClick={() => replayAnimation()}>Replay Animation</button>
+            {animationPlayed ?
                 <div>
-                    <IntroLoadingAnimation earthModel={earthData} textModel={textData} animationPlayed={false} />
-                    {mountIntroHeader ? <IntroHeader /> : <div/>}
+                    {textData && earthData ?
+                        <div>
+                            <IntroLoadingAnimation earthModel={earthData} textModel={textData} animationPlayed={true} />
+                        </div>
+                        :null
+                    }
                 </div>
                 :
-                <IntroLoadingScreen />}
+                <div>
+                    {textData && earthData ?
+                        <div>
+                            <IntroLoadingAnimation earthModel={earthData} textModel={textData} animationPlayed={false} />
+                        </div>
+                        :
+                        <IntroLoadingScreen />
+                    }
+                </div>
+            }
+
         </div>
 
     )

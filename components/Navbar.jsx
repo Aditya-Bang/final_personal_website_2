@@ -46,7 +46,7 @@ const Navbar = () => {
                 {links.map((link, index) => {
 
                     return (
-                        <div>
+                        <div key={index}>
                             <div
                                 className="relative flex pr-4 pl-4 pt-1 pb-1"
                                 onMouseEnter={() => setHoverIndex(index)}

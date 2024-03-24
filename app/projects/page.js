@@ -15,7 +15,7 @@ const Qualifications = () => {
         <div className='flex flex-row'>
             {projects.map((project, index) => {
                 return (
-                    <div>
+                    <div key={index}>
                         <div
                             className="relative group block p-2 h-full w-full"
                             onMouseEnter={() => setHoverIndex(index)}

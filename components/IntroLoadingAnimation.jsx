@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from "react";
+import IntroHeader from "./IntroHeader";
 
 import * as THREE from 'three';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
@@ -48,6 +49,7 @@ var glowFragmentShader = [
 
 const IntroLoadingAnimation = (props) => {
     const mountRef = useRef(null);
+    const [mountHeader, setMountHeader] = useState(false);
 
     useEffect(() => {
         const earthModel = props.earthModel;
@@ -396,6 +398,8 @@ const IntroLoadingAnimation = (props) => {
                 splineCamera.lookAt(-154, 0, -100);
 
                 textModel.rotation.y = 0;
+
+                if (!mountHeader) setMountHeader(true);                
             } else {
                 if (pickNext != 0) {
 
@@ -448,6 +452,8 @@ const IntroLoadingAnimation = (props) => {
                         spCameraX = -154;
                     }
 
+                    if (!mountHeader && t > 0.8) setMountHeader(true);
+
                     cameraHelper.update();
 
                 } else {
@@ -463,7 +469,7 @@ const IntroLoadingAnimation = (props) => {
             }
 
 
-            
+
             rotateEarth(elapsedTime / 1000);
 
             render();
@@ -483,8 +489,11 @@ const IntroLoadingAnimation = (props) => {
 
 
     return (
-        <div className="absolute">
-            <div ref={mountRef} />
+        <div>
+            <div className="absolute">
+                <div ref={mountRef} />
+            </div>
+            {mountHeader ? <IntroHeader animationPlayed={props.animationPlayed}/> : <div/>}
         </div>
     )
 }
