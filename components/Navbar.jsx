@@ -42,7 +42,7 @@ const Navbar = () => {
 
     return (
         <div className='flex items-center justify-center'>
-            <div className='flex flex-row shadow-lg-invert border text-white mt-5 rounded-full p-2 items-center justify-center'>
+            <div className='flex flex-row shadow-lg-invert border text-white rounded-full p-2 items-center justify-center'>
                 {links.map((link, index) => {
 
                     return (

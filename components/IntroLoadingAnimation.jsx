@@ -237,7 +237,7 @@ const IntroLoadingAnimation = (props) => {
         function rotateText2(elapsedT) {
             if (textModel) {
                 if (textModel.rotation.y > 0) {
-                    textModel.rotation.y -= elapsedT / 5;
+                    textModel.rotation.y -= elapsedT / 2.5;
                 } else {
                     textModel.rotation.y = 0;
                 }
@@ -245,7 +245,7 @@ const IntroLoadingAnimation = (props) => {
         }
 
         function rotateEarth(elapsedT) {
-            if (earthModel) earthModel.rotation.y += elapsedT / 5;
+            if (earthModel) earthModel.rotation.y += elapsedT / 2.5;
         }
 
         setupScene();
