@@ -3,6 +3,7 @@
 import React from 'react'
 import ProjectCard2 from '@/components/ProjectCard2'
 import projects from "../../writing/projects.json"
+import Technology from '@/components/Technology'
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from 'react';
@@ -58,8 +59,8 @@ const Qualifications = () => {
                         )
                     })}
                 </div>
-                <div className='basis-3/12 h-full bg-green-500'>
-
+                <div className='basis-3/12 h-full w-full '>
+                    <Technology />
                 </div>
             </div>
         </div>
