@@ -24,12 +24,12 @@ const links = [
         link: "/about",
     },
     {
-        name: "Qualifications",
-        link: "/qualifications",
-    },
-    {
         name: "Projects",
         link: "/projects",
+    },
+    {
+        name: "Qualifications",
+        link: "/qualifications",
     },
     {
         name: "Contact",
