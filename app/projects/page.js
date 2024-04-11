@@ -9,7 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 
-const Qualifications = () => {
+const Projects = () => {
     const [hoverIndex, setHoverIndex] = useState(null);
 
     return (
@@ -29,7 +29,7 @@ const Qualifications = () => {
                                     <AnimatePresence>
                                         {hoverIndex === index && (
                                             <motion.span
-                                                className="absolute inset-0 w-full bg-neutral-200 dark:bg-[#212B33] block rounded-xl"
+                                                className="absolute inset-0 w-full bg-[#212B33] block rounded-xl"
                                                 layoutId="hoverBackground"
                                                 initial={{ opacity: 0 }}
                                                 animate={{
@@ -67,4 +67,4 @@ const Qualifications = () => {
     )
 }
 
-export default Qualifications
+export default Projects

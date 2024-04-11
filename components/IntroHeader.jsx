@@ -5,12 +5,20 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 import { Quantico } from 'next/font/google';
-
 const quantico = Quantico({
   subsets: ["latin"],
   display: 'swap',
   weight: '400',
 });
+// import { Orbitron } from 'next/font/google';
+// const orbitron = Orbitron({
+//     subsets: ["latin"],
+// });
+// import { Anonymous_Pro } from 'next/font/google';
+// const anonymous_pro = Anonymous_Pro({
+//   subsets: ["latin"],
+//   weight: '400'
+// });
 
 import "./stylestest/test4.scss";
 

@@ -6,12 +6,26 @@ import emailjs from "@emailjs/browser";
 import Loader from './Loader';
 
 import { Quantico } from 'next/font/google';
-
 const quantico = Quantico({
     subsets: ["latin"],
     display: 'swap',
     weight: '400',
 });
+// import { Orbitron } from 'next/font/google';
+// const orbitron = Orbitron({
+//     subsets: ["latin"],
+//     weight: '400'
+// });
+// import { Courier_Prime } from 'next/font/google';
+// const courier_prime = Courier_Prime({
+//     subsets: ["latin"],
+//     weight: '400'
+// });
+// import { Anonymous_Pro } from 'next/font/google';
+// const anonymous_pro = Anonymous_Pro({
+//   subsets: ["latin"],
+//   weight: '400'
+// });
 
 const ContactForm = () => {
     const [name, setName] = useState("");
@@ -58,9 +72,9 @@ const ContactForm = () => {
     }
 
     return (
-        <section className="flex flex-col rounded-lg bg-gray-800 border-gray-700 p-5 gap-2 w-full h-full">
+        <section className={`${quantico.className} flex flex-col rounded-lg bg-gray-800 border-gray-700 p-5 gap-2 w-full h-full`}>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4 h-full">
-                <h1 className={`${quantico.className} text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white`}>
+                <h1 className="text-center leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                     Send me a message!
                 </h1>
 

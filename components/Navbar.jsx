@@ -7,12 +7,26 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 import { Quantico } from 'next/font/google';
-
 const quantico = Quantico({
     subsets: ["latin"],
     display: 'swap',
     weight: '700',
 });
+// import { Orbitron } from 'next/font/google';
+// const orbitron = Orbitron({
+//     subsets: ["latin"],
+//     weight: '600'
+// });
+// import { Courier_Prime } from 'next/font/google';
+// const courier_prime = Courier_Prime({
+//     subsets: ["latin"],
+//     weight: '400'
+// });
+// import { Anonymous_Pro } from 'next/font/google';
+// const anonymous_pro = Anonymous_Pro({
+//   subsets: ["latin"],
+//   weight: '700'
+// });
 
 const links = [
     {
