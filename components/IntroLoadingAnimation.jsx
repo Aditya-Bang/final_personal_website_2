@@ -55,6 +55,8 @@ const IntroLoadingAnimation = (props) => {
         const earthModel = props.earthModel;
         const textModel = props.textModel;
         var animationPlayed = props.animationPlayed;
+        const currentRefValue = mountRef.current;
+        var animationFrameID = null;
 
         const BLOOM_SCENE = 1;
 
@@ -237,7 +239,7 @@ const IntroLoadingAnimation = (props) => {
         function rotateText2(elapsedT) {
             if (textModel) {
                 if (textModel.rotation.y > 0) {
-                    textModel.rotation.y -= elapsedT / 2.5;
+                    textModel.rotation.y -= elapsedT / 2.3;
                 } else {
                     textModel.rotation.y = 0;
                 }
@@ -245,7 +247,7 @@ const IntroLoadingAnimation = (props) => {
         }
 
         function rotateEarth(elapsedT) {
-            if (earthModel) earthModel.rotation.y += elapsedT / 2.5;
+            if (earthModel) earthModel.rotation.y += elapsedT / 2;
         }
 
         setupScene();
@@ -373,7 +375,7 @@ const IntroLoadingAnimation = (props) => {
         var cameraRotation = -Math.PI / 4;
 
         var animate = function () {
-            requestAnimationFrame(animate);
+            animationFrameID = requestAnimationFrame(animate);
 
             // camera.lookAt(0,0,0);
             // camera.rotateZ(cameraRotation); // use this to rotate spline camera
@@ -399,7 +401,7 @@ const IntroLoadingAnimation = (props) => {
 
                 textModel.rotation.y = 0;
 
-                if (!mountHeader) setMountHeader(true);                
+                if (!mountHeader) setMountHeader(true);
             } else {
                 if (pickNext != 0) {
 
@@ -479,21 +481,25 @@ const IntroLoadingAnimation = (props) => {
 
 
         return () => {
-            if (mountRef.current != null) {
-                mountRef.current.removeChild(renderer.domElement);
+            if (currentRefValue != null) {
+                currentRefValue.removeChild(renderer.domElement);
             }
-
+            if (animationFrameID != null) {
+                cancelAnimationFrame(animationFrameID);
+            }
         }
 
     }, [])
-
 
     return (
         <div>
             <div className="absolute">
                 <div ref={mountRef} />
             </div>
-            {mountHeader ? <IntroHeader animationPlayed={props.animationPlayed}/> : <div/>}
+            {mountHeader ?
+                <div>
+                    <IntroHeader animationPlayed={props.animationPlayed} />
+                </div> : <div />}
         </div>
     )
 }

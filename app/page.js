@@ -2,10 +2,18 @@
 
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { useEffect, useState } from "react";
+import { motion } from 'framer-motion';
 
 import IntroLoadingScreen from '@/components/IntroLoadingScreen';
 import IntroLoadingAnimation from '@/components/IntroLoadingAnimation';
 import Loader from '@/components/Loader';
+
+import { Quantico } from 'next/font/google';
+const quantico = Quantico({
+    subsets: ["latin"],
+    display: 'swap',
+    weight: '700',
+});
 
 const ETscale = 100;
 
@@ -13,7 +21,8 @@ const LoadingTest = () => {
     const [textData, setTextData] = useState(null);
     const [earthData, setEarthData] = useState(null);
     const [animationPlayed, setAnimationPlayed] = useState(false);
-    const [btnDisabled, setBtnDisabled] = useState(true);
+    const [animationFinished, setAnimationFinished] = useState(false);
+    const [playCnt, setPlayCnt] = useState(0);
 
     function loadText2() {
         const textLoader = new GLTFLoader();
@@ -29,7 +38,7 @@ const LoadingTest = () => {
             function (xhr) {
                 //console.log((xhr.loaded / xhr.total * 100) + '% loaded');
             },
-            function (error) {console.log('An error happened', error);}
+            function (error) { console.log('An error happened', error); }
         );
     }
 
@@ -46,7 +55,7 @@ const LoadingTest = () => {
             function (xhr) {
                 //console.log((xhr.loaded / xhr.total * 100) + '% loaded');
             },
-            function (error) {console.log('An error happened', error);}
+            function (error) { console.log('An error happened', error); }
         );
     }
 
@@ -54,16 +63,22 @@ const LoadingTest = () => {
         try {
             const sessionStorageAnimationPlayed = await sessionStorage.getItem('animationPlayed');
             const animationPlayedBurner = sessionStorageAnimationPlayed ? sessionStorageAnimationPlayed : 'false';
-            if (animationPlayedBurner == 'true') setAnimationPlayed(true);
-            else setAnimationPlayed(false);
-            console.log(animationPlayed);
+            if (animationPlayedBurner == 'true') {
+                setAnimationPlayed(true);
+                setAnimationFinished(true);
+            } else {
+                setAnimationPlayed(false);
+            }
+            // console.log(animationPlayedBurner, 'before timeout')
+            // setTimeout(() => {
+            //     console.log(animationPlayedBurner, "after timeout");
+            // }, 1000);
+
 
             if (animationPlayed) {
 
                 if (!textData) loadText2();
                 if (!earthData) loadEarth();
-                setBtnDisabled(false);
-
             }
             else {
                 sessionStorage.setItem('animationPlayed', 'true');
@@ -74,9 +89,9 @@ const LoadingTest = () => {
                 }, 400);
 
                 setTimeout(() => {
-                    setAnimationPlayed('true');
-                    setBtnDisabled(false);
-                }, 15000);
+                    // setAnimationPlayed(true);
+                    setAnimationFinished(true);
+                }, 16000);
             }
 
         } catch (error) {
@@ -88,22 +103,35 @@ const LoadingTest = () => {
         fetchAnimationPlayed();
     }, [])
 
-    const replayAnimation = async () => {
-        console.log("Replaying Animation");
-        sessionStorage.setItem('animationPlayed', 'false');
-        setBtnDisabled(true);
-        setAnimationPlayed("false");
-        fetchAnimationPlayed();
+    const handleReplay = () => {
+        setPlayCnt(playCnt + 1);
+        // setAnimationPlayed(true);
+        setAnimationPlayed(false);
+        setAnimationFinished(false);
+        setTimeout(() => {
+            // setAnimationPlayed(true);
+            setAnimationFinished(true);
+        }, 15500);
     }
+
+    // const replayAnimation = async () => {
+    //     console.log("Replaying Animation");
+    //     sessionStorage.setItem('animationPlayed', 'false');
+    //     setBtnDisabled(true);
+    //     setAnimationPlayed("false");
+    //     fetchAnimationPlayed();
+    // }
+    // <button hidden={btnDisabled} className='text-white absolute z-50' onClick={() => replayAnimation()}>Replay Animation</button>
+    // const [btnDisabled, setBtnDisabled] = useState(true);
 
     return (
         <div>
-            <button hidden={btnDisabled} className='text-white absolute z-50' onClick={() => replayAnimation()}>Replay Animation</button>
+
             {animationPlayed ?
                 <div>
                     {textData && earthData ?
                         <div>
-                            <IntroLoadingAnimation earthModel={earthData} textModel={textData} animationPlayed={true} />
+                            <IntroLoadingAnimation key="animationhasplayed" earthModel={earthData} textModel={textData} animationPlayed={true} />
                         </div>
                         :
                         <div className='h-screen flex items-center justify-center'><Loader /></div>
@@ -113,13 +141,41 @@ const LoadingTest = () => {
                 <div>
                     {textData && earthData ?
                         <div>
-                            <IntroLoadingAnimation earthModel={earthData} textModel={textData} animationPlayed={false} />
+                            <IntroLoadingAnimation key={playCnt} earthModel={earthData} textModel={textData} animationPlayed={false} />
                         </div>
                         :
                         <IntroLoadingScreen />
                     }
                 </div>
             }
+            {textData && earthData && animationFinished ?
+                <div className={`${quantico.className} absolute bottom-0 right-0 text-white`}>
+                    {animationPlayed ?
+                        <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={handleReplay}
+                            className='z-10 m-10 bg-blue-500 pt-1 pb-1 pl-2 pr-2 rounded-lg border text-white'>
+                            Replay Animation
+                        </motion.button>
+                        :
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 1 }}
+                        >
+                            <motion.button
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={handleReplay}
+                                className='z-10 m-10 bg-blue-500 pt-1 pb-1 pl-2 pr-2 rounded-lg border text-white'>
+                                Replay Animation
+                            </motion.button>
+                        </motion.div>
+                    }
+
+                </div>
+                : <div />}
 
         </div>
 

@@ -15,8 +15,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} bg-black`}>
-        <StarBG/>
-        <div className="absolute h-full w-full">{children}</div>
+        <StarBG2/>
+        <div className="absolute h-full w-full ">{children}</div>
       </body>
     </html>
   );

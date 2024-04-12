@@ -11,6 +11,9 @@ module.exports = {
         typewriter: 'typewriter 0.8s steps(25) forwards',
         caret: 'typewriter 0.8s steps(25) forwards',
       },
+      backdropBlur: {
+        xs: '1px',
+      },
       keyframes: {
         typewriter: {
           to: {

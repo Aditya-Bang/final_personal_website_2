@@ -13,7 +13,7 @@ const Projects = () => {
     const [hoverIndex, setHoverIndex] = useState(null);
 
     return (
-        <div className='flex flex-col p-5 h-screen pl-20 pr-20'>
+        <div className='flex flex-col p-5 h-screen pl-20 pr-20 overflow-hidden'>
             <Navbar />
 
             <div className='flex flex-row h-full w-full mt-5'>
@@ -59,8 +59,8 @@ const Projects = () => {
                         )
                     })}
                 </div>
-                <div className='basis-3/12 h-full w-full '>
-                    <Technology />
+                <div className='basis-3/12 h-full w-full'>
+                    {/*<Technology />*/}
                 </div>
             </div>
         </div>

@@ -9,63 +9,63 @@ import {
 } from "@react-three/drei";
 
 const technologies = [
-    {
-      name: "HTML 5",
-      icon: "html",
-    },
-    {
-        name: "Tensorflow",
-        icon: "tensorflow"
-    },
-    {
-      name: "CSS 3",
-      icon: "css",
-    },
-    {
-      name: "JavaScript",
-      icon: "javascript",
-    },
-    {
-      name: "TypeScript",
-      icon: "typescript",
-    },
-    {
-      name: "React JS",
-      icon: "reactjs",
-    },
-    {
-      name: "Redux Toolkit",
-      icon: "redux",
-    },
-    {
-      name: "Tailwind CSS",
-      icon: "tailwind",
-    },
-    {
-      name: "Node JS",
-      icon: "nodejs",
-    },
-    {
-      name: "MongoDB",
-      icon: "mongodb",
-    },
-    {
-      name: "Git",
-      icon: "git",
-    },
-    {
-      name: "Figma",
-      icon: "figma",
-    },
-    {
-        name: "ThreeJS",
-        icon: "threejs"
-    },
-    {
-      name: "Docker",
-      icon: "docker",
-    },
-  ];
+  {
+    name: "HTML 5",
+    icon: "html",
+  },
+  {
+    name: "Tensorflow",
+    icon: "tensorflow"
+  },
+  {
+    name: "CSS 3",
+    icon: "css",
+  },
+  {
+    name: "JavaScript",
+    icon: "javascript",
+  },
+  {
+    name: "TypeScript",
+    icon: "typescript",
+  },
+  {
+    name: "React JS",
+    icon: "reactjs",
+  },
+  {
+    name: "Redux Toolkit",
+    icon: "redux",
+  },
+  {
+    name: "Tailwind CSS",
+    icon: "tailwind",
+  },
+  {
+    name: "Node JS",
+    icon: "nodejs",
+  },
+  {
+    name: "MongoDB",
+    icon: "mongodb",
+  },
+  {
+    name: "Git",
+    icon: "git",
+  },
+  {
+    name: "Figma",
+    icon: "figma",
+  },
+  {
+    name: "ThreeJS",
+    icon: "threejs"
+  },
+  {
+    name: "Docker",
+    icon: "docker",
+  },
+];
 
 // import CanvasLoader from "../Loader";
 // fallback={<CanvasLoader />}
@@ -115,16 +115,16 @@ const BallCanvas = ({ icon }) => {
 };
 
 const Technology = () => {
-    return (
-      <div className='flex flex-row flex-wrap justify-center items-center gap-2'>
-        {technologies.map((technology) => (
-          <div className=' flex flex-col justify-center items-center p-2 text-white' key={technology.name}>
-            {technology.name}
-            <BallCanvas icon={`/tech/${technology.icon}.png`} />
-          </div>
-        ))}
-      </div>
-    );
-  };
+  return (
+    <div className='flex h-full flex-row flex-wrap justify-center items-center gap-2 overflow-auto'>
+      {technologies.map((technology) => (
+        <div className=' flex flex-col justify-center items-center p-2 text-white' key={technology.name}>
+          {technology.name}
+          <BallCanvas icon={`/tech/${technology.icon}.png`} />
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default Technology;
