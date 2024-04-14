@@ -1,10 +1,16 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
-import StarBG from "@/components/StarBG";
 import StarBG2 from "@/components/StarBG2";
-//import { WebVitals } from "@/components/WebVitals"; {/*<WebVitals />*/}
 
-const inter = Inter({ subsets: ["latin"] });
+// import StarBG from "@/components/StarBG";
+// import { WebVitals } from "@/components/WebVitals"; {/*<WebVitals />*/}
+// import { Inter } from "next/font/google";
+// const inter = Inter({ subsets: ["latin"] });
+
+import { Anonymous_Pro } from 'next/font/google';
+const anonymous_pro = Anonymous_Pro({
+  subsets: ["latin"],
+  weight: '400'
+});
 
 export const metadata = {
   title: "AB Personal Website",
@@ -14,7 +20,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-black`}>
+      <body className={`${anonymous_pro.className} bg-black`}>
         <StarBG2/>
         <div className="absolute h-full w-full ">{children}</div>
       </body>
