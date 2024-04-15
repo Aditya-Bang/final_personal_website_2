@@ -72,21 +72,23 @@ const ContactForm = () => {
     }
 
     return (
-        <section className={`${quantico.className} flex flex-col rounded-lg bg-gray-800 border-gray-700 p-5 gap-2 w-full h-full`}>
+        <section className={`flex flex-col rounded-lg bg-gray-900 p-5 gap-2 w-full h-full`}>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4 h-full">
-                <h1 className="text-center leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                    Send me a message!
-                </h1>
+                <div className='flex w-full flex-row items-center justify-center gap-5 pr-5 pl-5'>
+                    <div className="flex-grow h-[1px] w-auto bg-[#3b426b] rounded-full"></div>
+                    <div className='text-2xl uppercase text-center text-white'>Contact me</div>
+                    <div className="flex-grow h-[1px] w-auto bg-[#3b426b] rounded-full "></div>
+                </div>
 
                 <div>
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <label className="block mb-2 font-medium text-white">
                         Name
                     </label>
                     <input
                         type="text"
                         name="name"
                         id="name"
-                        className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${loading ? 'opacity-40 pointer-events-none' : ''}`}
+                        className={`border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 ${loading ? 'opacity-40 pointer-events-none' : ''}`}
                         placeholder="Name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
@@ -97,7 +99,7 @@ const ContactForm = () => {
                 <div>
                     <label
                         for="email"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        className="block mb-2 font-medium text-gray-900 dark:text-white"
                     >
                         Email
                     </label>
@@ -106,7 +108,7 @@ const ContactForm = () => {
                         name="email"
                         id="email"
                         placeholder="Email"
-                        className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${loading ? 'opacity-40 pointer-events-none' : ''}`}
+                        className={`border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 ${loading ? 'opacity-40 pointer-events-none' : ''}`}
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -116,7 +118,7 @@ const ContactForm = () => {
                 <div className='grow flex flex-col'>
                     <label
                         for="message"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        className="block mb-2 font-medium text-gray-900 dark:text-white"
                     >
                         Message
                     </label>
@@ -125,7 +127,7 @@ const ContactForm = () => {
                         name="message"
                         id="message"
                         placeholder="Message"
-                        className={`grow bg-gray-50 border align-text-top border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${loading ? 'opacity-40 pointer-events-none' : ''}`}
+                        className={`grow border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-800 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 ${loading ? 'opacity-40 pointer-events-none' : ''}`}
                         required
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
@@ -135,7 +137,7 @@ const ContactForm = () => {
                 <div>
                     {loading ? <div className='flex justify-center items-center'><Loader /></div> :
                         <motion.button
-                            className="w-full text-white bg-red-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                            className="w-full text-white bg-gradient-to-r from-violet-600 to-indigo-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 focus:ring-primary-800"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             type="submit"

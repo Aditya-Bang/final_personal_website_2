@@ -1,30 +1,30 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 
-import { Quantico } from 'next/font/google';
-const quantico = Quantico({
-  subsets: ["latin"],
-  display: 'swap',
-  weight: '400',
-});
-import { Anonymous_Pro } from 'next/font/google';
-const anonymous_pro = Anonymous_Pro({
-  subsets: ["latin"],
-  weight: '400'
-});
-import { M_PLUS_1_Code } from 'next/font/google';
-const MFont = M_PLUS_1_Code({
-  subsets: ["latin"],
-  weight: '400'
-})
+// import { Quantico } from 'next/font/google';
+// const quantico = Quantico({
+//   subsets: ["latin"],
+//   display: 'swap',
+//   weight: '400',
+// });
+// import { Anonymous_Pro } from 'next/font/google';
+// const anonymous_pro = Anonymous_Pro({
+//   subsets: ["latin"],
+//   weight: '400'
+// });
+// import { M_PLUS_1_Code } from 'next/font/google';
+// const MFont = M_PLUS_1_Code({
+//   subsets: ["latin"],
+//   weight: '400'
+// })
 
 const About = () => {
   return (
     <div className='flex flex-col h-screen items-center p-5 gap-5 pr-10 pl-10'>
       <Navbar />
-      <div className={`${anonymous_pro.className} flex flex-row w-full h-full rounded-lg text-white bg-black`}>
-        <div className='flex flex-col w-full h-full rounded-lg p-5 border gap-2'>
-          <div className='flex flex-row items-center justify-center gap-20 pr-10 pl-10'>
+      <div className={`flex flex-row w-full h-full text-white bg-gray-900`}>
+        <div className='flex flex-col w-full h-full rounded-l-lg p-5 border gap-2'>
+          <div className='flex flex-row items-center justify-center gap-5 pr-5 pl-5'>
             <div className="flex-grow h-[1px] w-auto bg-[#3b426b] rounded-full "></div>
             <p className='text-5xl uppercase'>About Me</p>
             <div className="flex-grow h-[1px] w-auto bg-[#3b426b] rounded-full "></div>
@@ -51,7 +51,7 @@ const About = () => {
           </p>
 
         </div>
-        <div className='flex items-center justify-center rounded-lg border p-5'>
+        <div className='flex items-center justify-center rounded-r-lg border p-5'>
           Image
         </div>
 

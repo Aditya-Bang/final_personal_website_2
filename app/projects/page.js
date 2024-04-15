@@ -13,29 +13,29 @@ const Projects = () => {
     const [hoverIndex, setHoverIndex] = useState(null);
 
     return (
-        <div className='flex flex-col p-5 h-screen pl-20 pr-20 overflow-hidden'>
+        <div className='flex flex-col p-5 h-screen pl-10 pr-10 overflow-hidden'>
             <Navbar />
 
-            <div className='flex flex-row h-full w-full mt-5 gap-5'>
-                <div className='flex flex-col p-2 grow border rounded-lg'>
-                    <div className='flex flex-row items-center justify-center gap-20 pr-10 pl-10 w-full'>
+            <div className='flex flex-row h-full overflow-hidden w-full mt-5 gap-5'>
+                <div className='flex flex-col p-2 grow bg-gray-900 rounded-lg items-center'>
+                    <div className='flex flex-row items-center justify-center gap-5 pr-5 pl-5 w-full'>
                         <div className="flex-grow h-[1px] w-auto bg-[#3b426b] rounded-full "></div>
-                        <p className='text-5xl uppercase text-white'>Projects</p>
+                        <p className='text-2xl uppercase text-white'>Projects</p>
                         <div className="flex-grow h-[1px] w-auto bg-[#3b426b] rounded-full "></div>
                     </div>
-                    <div className='flex flex-row justify-center items-center h-full'>
+                    <div className='flex justify-center items-center h-full flex-row flex-wrap overflow-auto overflow-x-hidden scrollbar'>
                         {projects.map((project, index) => {
                             return (
                                 <div key={index}>
                                     <div
-                                        className="relative group block p-2 pl-3 pr-3 h-full"
+                                        className="relative group block p-1 pl-2 pr-2 h-full"
                                         onMouseEnter={() => setHoverIndex(index)}
                                         onMouseLeave={() => setHoverIndex(null)}
                                     >
                                         <AnimatePresence>
                                             {hoverIndex === index && (
                                                 <motion.span
-                                                    className="absolute inset-0 w-full bg-[#212B33] block rounded-xl"
+                                                    className="absolute inset-0 w-full bg-gray-700 block rounded-xl"
                                                     layoutId="hoverBackground"
                                                     initial={{ opacity: 0 }}
                                                     animate={{
@@ -67,7 +67,7 @@ const Projects = () => {
                     </div>
                 </div>
 
-                <div className='w-[350px] min-w-[300px] flex flex-col p-2 rounded-lg border gap-5'>
+                <div className='w-[330px] min-w-[330px] flex flex-col p-2 rounded-lg gap-5 bg-gray-900'>
                     <div className='flex w-full flex-row items-center justify-center gap-5 pr-5 pl-5'>
                         <div className="flex-grow h-[1px] w-auto bg-[#3b426b] rounded-full"></div>
                         <div className='text-2xl uppercase text-center text-white'>Technologies</div>

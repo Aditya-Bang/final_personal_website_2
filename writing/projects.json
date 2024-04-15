@@ -1,7 +1,7 @@
 [
     {
         "name": "Stud.AI",
-        "description": "Stud.AI Description TODO.",
+        "description": "Stud.AI Description TODO. sadflk;a dsal;kjf  ;lak jdsf;lkj a; ;kajd f;lksajd flkja lkaj;ds f",
         "tags": [
             {
                 "name": "React",
@@ -13,10 +13,14 @@
             },
             {
                 "name": "Tailwind",
+                "color": "blue"
+            },
+            {
+                "name": "Redux",
                 "color": "indigo"
             }
         ],
-        "image": "./projectimgs/StudAI.png",
+        "image": "/projectimgs/StudAI.png",
         "alt": "Stud.AI Project Image",
         "source_code_link": "https://github.com/SuperMK15/StudAI",
         "demo": "https://studai-8en7.onrender.com/"
@@ -34,7 +38,7 @@
                 "color": "indigo"
             }
         ],
-        "image": "./projectimgs/PersonalWebsite.png",
+        "image": "/projectimgs/PersonalWebsite.png",
         "alt": "Personal Website Image",
         "source_code_link": "https://github.com/Aditya-Bang/final_personal_website_2",
         "demo": ""
@@ -52,9 +56,23 @@
                 "color": "pink"
             }
         ],
-        "image": "./projectimgs/StudAI.png",
+        "image": "/projectimgs/CreatePage.png",
         "alt": "CreatePage Project Image",
         "source_code_link": "https://github.com/Aditya-Bang/CreatePage-Project",
+        "demo": "https://www.youtube.com/watch?v=Fbav823qCKg"
+    },
+    {
+        "name": "Space Invader Javascript Game",
+        "description": "Javascript Game space invaders",
+        "tags": [
+            {
+                "name": "Javascript",
+                "color": "yellow"
+            }
+        ],
+        "image": "/projectimgs/CreatePage.png",
+        "alt": "Space Invader Project Image",
+        "source_code_link": "",
         "demo": ""
     }
 ]

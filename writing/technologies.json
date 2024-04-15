@@ -1,0 +1,78 @@
+[
+    {
+        "name": "HTML 5",
+        "icon": "html"
+    },
+    {
+        "name": "Tensorflow",
+        "icon": "tensorflow"
+    },
+    {
+        "name": "CSS3",
+        "icon": "css"
+    },
+    {
+        "name": "JavaScript",
+        "icon": "javascript"
+    },
+    {
+        "name": "TypeScript",
+        "icon": "typescript"
+    },
+    {
+        "name": "React JS",
+        "icon": "reactjs"
+    },
+    {
+        "name": "Redux",
+        "icon": "redux"
+    },
+    {
+        "name": "Tailwind",
+        "icon": "tailwind"
+    },
+    {
+        "name": "Node JS",
+        "icon": "nodejs"
+    },
+    {
+        "name": "MongoDB",
+        "icon": "mongodb"
+    },
+    {
+        "name": "Git",
+        "icon": "git"
+    },
+    {
+        "name": "Figma",
+        "icon": "figma"
+    },
+    {
+        "name": "ThreeJS",
+        "icon": "threejs"
+    },
+    {
+        "name": "Docker",
+        "icon": "docker"
+    },
+    {
+        "name": "C++",
+        "icon": "C++"
+    },
+    {
+        "name": "C",
+        "icon": "C"
+    },
+    {
+        "name": "Racket",
+        "icon": "Racket"
+    },
+    {
+        "name": "Python",
+        "icon": "Python"
+    },
+    {
+        "name": "Next JS",
+        "icon": "Next"
+    }
+]
