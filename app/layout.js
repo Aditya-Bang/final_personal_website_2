@@ -15,6 +15,7 @@ const anonymous_pro = Anonymous_Pro({
 export const metadata = {
   title: "AB Personal Website",
   description: "Aditya Bang's Personal Website",
+  keywords: ["aditya bang", "aditya", "bang", "personal website", "portfolio", "web dev", "aditya developer", "mern stack", "aditya bang portfolio"]
 };
 
 export default function RootLayout({ children }) {

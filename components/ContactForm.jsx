@@ -6,6 +6,7 @@ import emailjs from "@emailjs/browser";
 import Loader from './Loader';
 
 import { Quantico } from 'next/font/google';
+import MyLinks from './MyLinks';
 const quantico = Quantico({
     subsets: ["latin"],
     display: 'swap',
@@ -66,7 +67,7 @@ const ContactForm = () => {
                     console.log("Bye");
                     console.error(error);
 
-                    alert("Ahh, something went wrong. Please try again.");
+                    alert("Ahh, something went wrong. I may be out of emailjs tokens. Please contact me through linkedin or by email instead.");
                 }
             );
     }
@@ -147,6 +148,7 @@ const ContactForm = () => {
                         </motion.button>}
                 </div>
             </form>
+            <div className='flex w-full justify-center items-center'><MyLinks type="row"/></div>
         </section>
 
     )

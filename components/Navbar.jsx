@@ -97,7 +97,7 @@ const Navbar = () => {
                 <div className="relative group">
                     <span className="absolute left-0 bottom-0 w-full h-1 bg-blue-400 group-hover:h-full group-hover:transition-all"></span>
                     <span className='relative z-20'>
-                        <Link className='flex flex-row justify-center items-center gap-2' href='/'>
+                        <Link className='flex flex-row justify-center items-center gap-2' target='_blank' href='https://www.linkedin.com/in/adi-bang/'>
                             <p>Linkedin</p>
                             <FiExternalLink />
                         </Link>
@@ -106,7 +106,7 @@ const Navbar = () => {
                 <div className="relative group">
                     <span className="absolute left-0 bottom-0 w-full h-1 bg-blue-400 group-hover:h-full group-hover:transition-all"></span>
                     <span className='relative z-20'>
-                        <Link className='flex flex-row justify-center items-center gap-2' href='/'>
+                        <Link className='flex flex-row justify-center items-center gap-2' target='_blank' href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>
                             <p>My Resume</p>
                             <FiExternalLink />
                         </Link>
