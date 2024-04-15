@@ -1,5 +1,7 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
+import Link from 'next/link';
+import { FiExternalLink } from 'react-icons/fi';
 
 // import { Quantico } from 'next/font/google';
 // const quantico = Quantico({
@@ -20,38 +22,43 @@ import Navbar from '@/components/Navbar';
 
 const About = () => {
   return (
-    <div className='flex flex-col h-screen items-center p-5 gap-5 pr-10 pl-10'>
+    <div className='flex flex-col h-screen items-center p-5 gap-5'>
       <Navbar />
-      <div className={`flex flex-row w-full h-full text-white bg-gray-900`}>
-        <div className='flex flex-col w-full h-full rounded-l-lg p-5 border gap-2'>
+      <div className={`flex flex-row w-full h-full text-gray-300 bg-gray-900 overflow-hidden`}>
+        <div className='flex flex-col w-full h-full rounded-l-lg p-5 border gap-5 overflow-auto scrollbar'>
           <div className='flex flex-row items-center justify-center gap-5 pr-5 pl-5'>
             <div className="flex-grow h-[1px] w-auto bg-[#3b426b] rounded-full "></div>
-            <p className='text-5xl uppercase'>About Me</p>
+            <p className='text-5xl uppercase text-white'>About Me</p>
             <div className="flex-grow h-[1px] w-auto bg-[#3b426b] rounded-full "></div>
           </div>
 
-          <p className='text-xl'>Hello and welcome to my personal website. My name is Aditya Bang and I am currently a second year Co-op computer science student at the University of Waterloo.</p>
           <p className='text-xl'>
-            Hi, my name is Aditya Bang. I am currently a second year&nbsp;
-            <span className='text-red-500'>computer science</span>
-            &nbsp;student pursing my bachelor&apos;s degree at the&nbsp;
-            <span className='text-red-500'>University of Waterloo</span>
-            .
+            Hello and welcome to my personal website. I'm Aditya Bang, and I'm currently a second-year&nbsp;<span className='text-blue-400'>Co-op computer science</span>&nbsp;student at the&nbsp;<span className='text-blue-400'>University of Waterloo</span>.
           </p>
-          <p className='text-3xl underline'>My Interests</p>
           <p className='text-xl'>
-            Full stack development, please replay the animation (have link here), done a bunch of projects, learning the math behind AI, reading papers, etc. graph theory through competitive programming and pure math which im taking in advanced waterloo math courses
-            I am passionate about making projects and have made some involving AI, graph theory, and more.
-            Lived in canada for about 10 years, and before that spent a 4 years living in florida and minnisota, and the rest in India.
+            My interests revolve around programming, mathematics, and physics. So far, I've mainly created full-stack projects, some of which involve AI. My curiosity extends to understanding the mathematical principles behind AI through reading research papers. Additionally, I'm keen on competitive programming, particularly in graph theory, and exploring pure mathematics in my classes at UWaterloo.
           </p>
-          <p className='text-xl'>Outside the classroom, I am interested in swimming (swimming emoji here) and watching basketball. (basketball emoji here)</p>
-          <p className='text-3xl underline'>My Future</p>
           <p className='text-xl'>
-            Seeking internships for Fall 2024. Feel free to contact me. (Link here) and thanks for visiting.
+            Beyond academics, I enjoy swimming and got my Bronze Cross Assistant lifeguard certification in 2019. I also like watching basketball.
           </p>
+          <p className='text-xl'>
+            Currently, I'm seeking internships for the Fall of 2024. Please don't hesitate to&nbsp;
 
+            <div className="relative group inline-flex">
+              <span className="absolute left-0 bottom-0 w-full h-1 bg-blue-400 group-hover:h-full group-hover:transition-all"></span>
+              <span className='relative z-20'>
+                <Link className='flex flex-row justify-center items-center' href='/contact'>
+                  <p>contact me</p>
+                  <FiExternalLink />
+                </Link>
+              </span>
+            </div>
+
+            . Thank you for taking the time to explore my personal website.
+          </p>
         </div>
-        <div className='flex items-center justify-center rounded-r-lg border p-5'>
+
+        <div className='flex items-center justify-center rounded-r-lg border p-5 w-[500px] overflow-auto scrollbar'>
           Image
         </div>
 

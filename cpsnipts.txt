@@ -918,3 +918,41 @@ export default IntroLoadingAnimation;
 //                 </div>
 //             </div>
 //         </div>
+
+------------------------------------------------------------ About Me page
+<p className='text-xl'>Hello and welcome to my personal website. My name is Aditya Bang and I am currently a second year Co-op computer science student at the University of Waterloo.</p>
+
+
+          <p className='text-xl'>
+            Full stack development, please replay the animation (have link here), done a bunch of projects, learning the math behind AI, reading papers, etc. graph theory through competitive programming and pure math which im taking in advanced waterloo math courses
+            I am passionate about making projects and have made some involving AI, graph theory, and more.
+            Lived in canada for about 10 years, and before that spent a 4 years living in florida and minnisota, and the rest in India.
+          </p>
+          <p className='text-xl'>Outside the classroom, I am interested in swimming (swimming emoji here) and watching basketball. (basketball emoji here)</p>
+          <p className='text-xl'>
+            Seeking internships for Fall 2024. Feel free to contact me. (Link here) and thanks for visiting.
+          </p>
+
+
+Hello and welcome to my personal website. I'm Aditya Bang, a second-year Co-op student majoring in computer science at the University of Waterloo.
+
+My interests revolve around programming, mathematics, and physics. With a focus on full-stack development, I've delved into various projects, some of which involve AI. My curiosity extends to understanding the mathematical principles underpinning AI through reading research papers. Additionally, I'm keen on competitive programming, particularly in graph theory, and exploring pure mathematics in my classes at UWaterloo.
+
+Beyond academics, I enjoy swimming and got my Bronze Cross Assistant lifeguard certification in 2019. I also like watching basketball.
+
+Currently, I'm seeking internships for the Fall of 2024. Please don't hesitate to reach out. Thank you for taking the time to explore my personal website.
+
+
+Hello and welcome to my personal website. My name is Aditya Bang and I am currently a second year Co-op computer science student at the University of Waterloo.
+
+I am passionate about anything remotely related to programming, math, and physics. I mainly have experience in full-stack development and am passionate about making projects and have made some involving AI. I am interested in learning the math behind AI by reading research papers, I am interested in competitive programming (mainly graph theory), and pure mathematics.
+
+Outside of work, I enjoy swimming as I got my Bronze Cross Assistant lifeguard certification in 2019. I also enjoy watching basketball.
+
+Currently, I am seeking internships for Fall 2024. Feel free to contact me and thank you for visiting my personal website.
+
+Full stack development, please replay the animation (have link here), done a bunch of projects, learning the math behind AI, reading papers, etc. graph theory through competitive programming and pure math which im taking in advanced waterloo math courses I am passionate about making projects and have made some involving AI, graph theory, and more. Lived in canada for about 10 years, and before that spent a 4 years living in florida and minnisota, and the rest in India.
+
+Outside the classroom, I am interested in swimming (swimming emoji here) and watching basketball. (basketball emoji here)
+
+Seeking internships for Fall 2024. Feel free to contact me. (Link here) and thanks for visiting.

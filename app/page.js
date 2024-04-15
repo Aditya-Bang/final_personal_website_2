@@ -8,13 +8,6 @@ import IntroLoadingScreen from '@/components/IntroLoadingScreen';
 import IntroLoadingAnimation from '@/components/IntroLoadingAnimation';
 import Loader from '@/components/Loader';
 
-import { Quantico } from 'next/font/google';
-const quantico = Quantico({
-    subsets: ["latin"],
-    display: 'swap',
-    weight: '700',
-});
-
 const ETscale = 100;
 
 const LoadingTest = () => {
@@ -149,7 +142,7 @@ const LoadingTest = () => {
                 </div>
             }
             {textData && earthData && animationFinished ?
-                <div className={`${quantico.className} absolute bottom-0 right-0 text-white`}>
+                <div className={`absolute bottom-0 right-0 text-white`}>
                     {animationPlayed ?
                         <motion.button
                             whileHover={{ scale: 1.1 }}

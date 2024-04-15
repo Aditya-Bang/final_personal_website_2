@@ -13,7 +13,7 @@ const Projects = () => {
     const [hoverIndex, setHoverIndex] = useState(null);
 
     return (
-        <div className='flex flex-col p-5 h-screen pl-10 pr-10 overflow-hidden'>
+        <div className='flex flex-col p-5 h-screen overflow-hidden'>
             <Navbar />
 
             <div className='flex flex-row h-full overflow-hidden w-full mt-5 gap-5'>

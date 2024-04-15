@@ -1,8 +1,12 @@
 [
     {
-        "name": "UWaterloo Computer Science Club Events Coordinator"
+        "name": "UW CSC Events Coordinator",
+        "date": "January 2023 - Present",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     },
     {
-        "name": "Something else"
+        "name": "WOSS CS Club Executive",
+        "date": "September 2022 - June 2023",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy took a galley of type and scrambled it to make a type specimen book."
     }
 ]

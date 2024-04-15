@@ -1,8 +1,14 @@
 [
     {
-        "name": "CS50"
+        "name": "CS50",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "provider": "edX",
+        "credential": "https://drive.google.com/file/d/14bY0_KdlUlWyigdtK85qFxFom0RXPiaW/view?usp=sharing"
     },
     {
-        "name": "Deep Learning Specialization"
+        "name": "Deep Learning Specialization",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "provider": "DeepLearning.AI",
+        "credential": "https://drive.google.com/file/d/1Rj-8EYrIZXVYwB7TeOt3MM-wqxpJzuEj/view?usp=sharing"
     }
 ]
