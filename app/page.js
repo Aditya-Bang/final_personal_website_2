@@ -53,7 +53,7 @@ const LoadingTest = () => {
     function loadText2() {
         const textLoader = new GLTFLoader();
         textLoader.load(
-            './name/curvedname.glb',
+            './name/curvedname-v1.glb',
 
             function (gltf) {
                 gltf.scene.scale.set(40, 40, 40);
