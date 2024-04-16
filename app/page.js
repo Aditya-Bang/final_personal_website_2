@@ -109,10 +109,12 @@ const LoadingTest = () => {
             else {
                 sessionStorage.setItem('animationPlayed', 'true');
 
-                setTimeout(() => {
-                    if (!textData) loadText2();
-                    if (!earthData) loadEarth();
-                }, 400);
+                if (!textData) loadText2();
+                if (!earthData) loadEarth();
+                // setTimeout(() => {
+                //     if (!textData) loadText2();
+                //     if (!earthData) loadEarth();
+                // }, 400);
 
                 setTimeout(() => {
                     // setAnimationPlayed(true);
