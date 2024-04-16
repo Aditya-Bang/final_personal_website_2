@@ -119,7 +119,7 @@ const LoadingTest = () => {
                 setTimeout(() => {
                     // setAnimationPlayed(true);
                     setAnimationFinished(true);
-                }, 16000);
+                }, 10500);
             }
 
         } catch (error) {
@@ -145,7 +145,7 @@ const LoadingTest = () => {
         setTimeout(() => {
             // setAnimationPlayed(true);
             setAnimationFinished(true);
-        }, 15500);
+        }, 9500);
     }
 
     // const replayAnimation = async () => {

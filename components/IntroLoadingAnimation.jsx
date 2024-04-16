@@ -87,7 +87,7 @@ const IntroLoadingAnimation = (props) => {
         camera.lookAt(0, 0, 0);
         let splineCamera, cameraHelper, cameraEye;
         splineCamera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.01, 1000);
-        const animationSpeed = 15;
+        const animationSpeed = 10;
         const direction = new THREE.Vector3();
         const binormal = new THREE.Vector3();
         const normal = new THREE.Vector3();
@@ -239,7 +239,7 @@ const IntroLoadingAnimation = (props) => {
         function rotateText2(elapsedT) {
             if (textModel) {
                 if (textModel.rotation.y > 0) {
-                    textModel.rotation.y -= elapsedT / 2.3;
+                    textModel.rotation.y -= elapsedT / 1.8;
                 } else {
                     textModel.rotation.y = 0;
                 }
@@ -448,8 +448,8 @@ const IntroLoadingAnimation = (props) => {
                     if (cameraRotation < 0) cameraRotation += elapsedTime / 10000;
                     else cameraRotation = 0; // camera rotation in quadratic - change spline to see further back
 
-                    if (t >= 0.5 && t <= 0.98 && spCameraX > -154) {
-                        spCameraX -= elapsedTime * 7 * Math.pow((t - 0.45), 2) * Math.pow((t - 0.986), 2);
+                    if (t >= 0.43 && t <= 0.98 && spCameraX > -154) {
+                        spCameraX -= elapsedTime * 5.95 * Math.pow((t - 0.4), 2) * Math.pow((t - 1), 2);
                     } else if (t > 0.98) {
                         spCameraX = -154;
                     }

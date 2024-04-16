@@ -88,7 +88,7 @@ const IntroAnimationMobile = (props) => {
         camera.lookAt(0, 0, 0);
         let splineCamera, cameraHelper, cameraEye;
         splineCamera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.01, 1000);
-        const animationSpeed = 15;
+        const animationSpeed = 10;
         const direction = new THREE.Vector3();
         const binormal = new THREE.Vector3();
         const normal = new THREE.Vector3();
@@ -170,8 +170,7 @@ const IntroAnimationMobile = (props) => {
             new THREE.Vector3(0, 9, 50),
             new THREE.Vector3(0, 9, 58),
             new THREE.Vector3(0, 9, 75),
-            new THREE.Vector3(0, 9, 81),
-            new THREE.Vector3(0, 9, 120),
+            new THREE.Vector3(0, 9, 115),
         ]);
 
 
@@ -241,7 +240,7 @@ const IntroAnimationMobile = (props) => {
         function rotateText2(elapsedT) {
             if (textModel) {
                 if (textModel.rotation.y > 0) {
-                    textModel.rotation.y -= elapsedT / 2.3;
+                    textModel.rotation.y -= elapsedT / 1.4;
                 } else {
                     textModel.rotation.y = 0;
                 }
@@ -398,7 +397,7 @@ const IntroAnimationMobile = (props) => {
             if (animationPlayed) {
                 splineCamera.position.x = -15;
                 splineCamera.position.y = 45;
-                splineCamera.position.z = 593;
+                splineCamera.position.z = 570;
                 splineCamera.lookAt(0, 20, -100);
 
                 textModel.rotation.y = 0;
