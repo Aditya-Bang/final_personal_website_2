@@ -239,7 +239,7 @@ const IntroLoadingAnimation = (props) => {
         function rotateText2(elapsedT) {
             if (textModel) {
                 if (textModel.rotation.y > 0) {
-                    textModel.rotation.y -= elapsedT / 1.8;
+                    textModel.rotation.y -= elapsedT / 1.71;
                 } else {
                     textModel.rotation.y = 0;
                 }
