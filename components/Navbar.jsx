@@ -56,9 +56,9 @@ const Navbar = () => {
     const [hoverIndex, setHoverIndex] = useState(null);
 
     return (
-        <div className='flex items-center justify-evenly flex-row w-full'>
-            <div className='text-white w-full'>Aditya Bang&apos;s Personal Website</div>
-            <div className='flex flex-row shadow-lg-invert border text-white rounded-full p-2 items-center justify-center'>
+        <div className='flex items-center justify-evenly flex-col gap-2 lg:gap-0 lg:flex-row w-full'>
+            <div className='text-white w-full hidden lg:flex'>Aditya Bang&apos;s Personal Website</div>
+            <div className='flex flex-row shadow-lg-invert border text-white rounded-full p-2 items-center justify-center md:min-w-[540px] flex-wrap'>
                 {links.map((link, index) => {
 
                     return (
@@ -93,7 +93,7 @@ const Navbar = () => {
                 })}
             </div>
 
-            <div className='text-white w-full flex flex-row justify-end gap-5'>
+            <div className='text-white w-full flex-row justify-center lg:justify-end gap-5 flex'>
                 <div className="relative group">
                     <span className="absolute left-0 bottom-0 w-full h-1 bg-blue-400 group-hover:h-full group-hover:transition-all"></span>
                     <span className='relative z-20'>

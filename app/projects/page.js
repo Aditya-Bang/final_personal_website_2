@@ -13,11 +13,11 @@ const Projects = () => {
     const [hoverIndex, setHoverIndex] = useState(null);
 
     return (
-        <div className='flex flex-col p-5 h-screen overflow-hidden'>
+        <div className='flex flex-col h-screen md:overflow-hidden p-5'>
             <Navbar />
 
-            <div className='flex flex-row h-full overflow-hidden w-full mt-5 gap-5'>
-                <div className='flex flex-col p-2 grow bg-gray-900 rounded-lg items-center'>
+            <div className='flex flex-col h-full w-full mt-5 gap-5 md:flex-row md:overflow-hidden'>
+                <div className='flex flex-col p-2 grow bg-gray-900 rounded-lg items-center mr-5 ml-5 md:m-0'>
                     <div className='flex flex-row items-center justify-center gap-5 pr-5 pl-5 w-full'>
                         <div className="flex-grow h-[1px] w-auto bg-[#3b426b] rounded-full "></div>
                         <p className='text-2xl uppercase text-white'>Projects</p>
@@ -67,7 +67,7 @@ const Projects = () => {
                     </div>
                 </div>
 
-                <div className='w-[330px] min-w-[330px] flex flex-col p-2 rounded-lg gap-5 bg-gray-900'>
+                <div className='md:w-[330px] md:min-w-[330px] flex flex-col p-2 rounded-lg gap-5 bg-gray-900 mr-5 ml-5 md:m-0'>
                     <div className='flex w-full flex-row items-center justify-center gap-5 pr-5 pl-5'>
                         <div className="flex-grow h-[1px] w-auto bg-[#3b426b] rounded-full"></div>
                         <div className='text-2xl uppercase text-center text-white'>Technologies</div>

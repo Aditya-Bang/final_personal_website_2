@@ -21,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${anonymous_pro.className} bg-black`}>
+      <body className={`${anonymous_pro.className} bg-black scrollbar overflow-auto`}>
         <StarBG2/>
         <div className="absolute h-full w-full ">{children}</div>
       </body>

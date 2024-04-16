@@ -73,7 +73,7 @@ const ContactForm = () => {
     }
 
     return (
-        <section className={`flex flex-col rounded-lg bg-gray-900 p-5 gap-2 w-full h-full`}>
+        <section className={`flex flex-col rounded-lg bg-gray-900 p-5 gap-2 w-full h-full max-h-[800px]`}>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4 h-full">
                 <div className='flex w-full flex-row items-center justify-center gap-5 pr-5 pl-5'>
                     <div className="flex-grow h-[1px] w-auto bg-[#3b426b] rounded-full"></div>

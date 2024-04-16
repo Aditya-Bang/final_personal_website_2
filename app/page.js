@@ -1,12 +1,38 @@
 'use client';
 
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { motion } from 'framer-motion';
 
 import IntroLoadingScreen from '@/components/IntroLoadingScreen';
 import IntroLoadingAnimation from '@/components/IntroLoadingAnimation';
 import Loader from '@/components/Loader';
+import IntroAnimationMobile from '@/components/IntroAnimationMobile';
+
+const useMediaQuery = (width) => {
+    const [targetReached, setTargetReached] = useState(false);
+
+    const updateTarget = useCallback((e) => {
+        if (e.matches) {
+            setTargetReached(true);
+        } else {
+            setTargetReached(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        const media = window.matchMedia(`(max-width: ${width}px)`);
+        media.addEventListener("change", updateTarget);
+
+        if (media.matches) {
+            setTargetReached(true);
+        }
+
+        return () => media.removeEventListener("change", updateTarget);
+    }, []);
+
+    return targetReached;
+};
 
 const ETscale = 100;
 
@@ -16,6 +42,13 @@ const LoadingTest = () => {
     const [animationPlayed, setAnimationPlayed] = useState(false);
     const [animationFinished, setAnimationFinished] = useState(false);
     const [playCnt, setPlayCnt] = useState(0);
+    // const [isDesktop, setDesktop] = useState(true);
+    const isDesktop = useMediaQuery(1200);
+
+    // const updateMedia = () => {
+    //     setDesktop(window.innerWidth > 1200);
+    //     console.log()
+    // };
 
     function loadText2() {
         const textLoader = new GLTFLoader();
@@ -94,7 +127,13 @@ const LoadingTest = () => {
 
     useEffect(() => {
         fetchAnimationPlayed();
+        // updateMedia();
     }, [])
+
+    // useEffect(() => {
+    //     if (typeof window !== "undefined") window.addEventListener("resize", updateMedia);
+    //     if (typeof window !== "undefined") return () => window.removeEventListener("resize", updateMedia);
+    // })
 
     const handleReplay = () => {
         setPlayCnt(playCnt + 1);
@@ -117,61 +156,116 @@ const LoadingTest = () => {
     // <button hidden={btnDisabled} className='text-white absolute z-50' onClick={() => replayAnimation()}>Replay Animation</button>
     // const [btnDisabled, setBtnDisabled] = useState(true);
 
+
     return (
         <div>
-
-            {animationPlayed ?
-                <div>
-                    {textData && earthData ?
+            {!isDesktop ?
+                <div className='overflow-hidden'>
+                    {animationPlayed ?
                         <div>
-                            <IntroLoadingAnimation key="animationhasplayed" earthModel={earthData} textModel={textData} animationPlayed={true} />
+                            {textData && earthData ?
+                                <div>
+                                    <IntroLoadingAnimation key="animationhasplayed" earthModel={earthData} textModel={textData} animationPlayed={true} />
+                                </div>
+                                :
+                                <div className='h-screen flex items-center justify-center'><Loader /></div>
+                            }
                         </div>
                         :
-                        <div className='h-screen flex items-center justify-center'><Loader /></div>
+                        <div>
+                            {textData && earthData ?
+                                <div>
+                                    <IntroLoadingAnimation key={playCnt} earthModel={earthData} textModel={textData} animationPlayed={false} />
+                                </div>
+                                :
+                                <IntroLoadingScreen />
+                            }
+                        </div>
                     }
+                    {textData && earthData && animationFinished ?
+                        <div className={`absolute bottom-0 right-0 text-white`}>
+                            {animationPlayed ?
+                                <motion.button
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    onClick={handleReplay}
+                                    className='z-10 m-10 bg-blue-500 pt-1 pb-1 pl-2 pr-2 rounded-lg border text-white'>
+                                    Replay Animation
+                                </motion.button>
+                                :
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 1 }}
+                                >
+                                    <motion.button
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        onClick={handleReplay}
+                                        className='z-10 m-10 bg-blue-500 pt-1 pb-1 pl-2 pr-2 rounded-lg border text-white'>
+                                        Replay Animation
+                                    </motion.button>
+                                </motion.div>
+                            }
+
+                        </div>
+                        : <div />}
                 </div>
                 :
-                <div>
-                    {textData && earthData ?
+                <div className='overflow-hidden'>
+                    {animationPlayed ?
                         <div>
-                            <IntroLoadingAnimation key={playCnt} earthModel={earthData} textModel={textData} animationPlayed={false} />
+                            {textData && earthData ?
+                                <div>
+                                    <IntroAnimationMobile key="animationhasplayed" earthModel={earthData} textModel={textData} animationPlayed={true} />
+                                </div>
+                                :
+                                <div className='h-screen flex items-center justify-center'><Loader /></div>
+                            }
                         </div>
                         :
-                        <IntroLoadingScreen />
+                        <div>
+                            {textData && earthData ?
+                                <div>
+                                    <IntroAnimationMobile key={playCnt} earthModel={earthData} textModel={textData} animationPlayed={false} />
+                                </div>
+                                :
+                                <IntroLoadingScreen />
+                            }
+                        </div>
                     }
+                    {textData && earthData && animationFinished ?
+                        <div className={`absolute bottom-0 right-0 text-white`}>
+                            {animationPlayed ?
+                                <motion.button
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    onClick={handleReplay}
+                                    className='z-10 m-10 bg-blue-500 pt-1 pb-1 pl-2 pr-2 rounded-lg border text-white'>
+                                    Replay Animation
+                                </motion.button>
+                                :
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 1 }}
+                                >
+                                    <motion.button
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        onClick={handleReplay}
+                                        className='z-10 m-10 bg-blue-500 pt-1 pb-1 pl-2 pr-2 rounded-lg border text-white'>
+                                        Replay Animation
+                                    </motion.button>
+                                </motion.div>
+                            }
+
+                        </div>
+                        : <div />}
+
                 </div>
             }
-            {textData && earthData && animationFinished ?
-                <div className={`absolute bottom-0 right-0 text-white`}>
-                    {animationPlayed ?
-                        <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={handleReplay}
-                            className='z-10 m-10 bg-blue-500 pt-1 pb-1 pl-2 pr-2 rounded-lg border text-white'>
-                            Replay Animation
-                        </motion.button>
-                        :
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 1 }}
-                        >
-                            <motion.button
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.95 }}
-                                onClick={handleReplay}
-                                className='z-10 m-10 bg-blue-500 pt-1 pb-1 pl-2 pr-2 rounded-lg border text-white'>
-                                Replay Animation
-                            </motion.button>
-                        </motion.div>
-                    }
-
-                </div>
-                : <div />}
-
         </div>
-
     )
 }
 

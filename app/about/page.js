@@ -23,10 +23,10 @@ import MyLinks from '@/components/MyLinks';
 
 const About = () => {
   return (
-    <div className='flex flex-col h-screen items-center p-5 gap-5'>
+    <div className='flex flex-col h-screen items-center p-5 gap-5 '>
       <Navbar />
-      <div className={`flex flex-row w-full h-full text-gray-300 overflow-hidden gap-2`}>
-        <div className='flex flex-col w-full h-full rounded-lg p-5 bg-gray-900 gap-5 overflow-auto scrollbar'>
+      <div className={`flex flex-col grow w-full text-gray-300 gap-2 md:flex-row md:overflow-hidden`}>
+        <div className='flex flex-col w-full h-full rounded-lg p-5 bg-gray-900 gap-5 scrollbar md:overflow-auto'>
           <div className='flex flex-row items-center justify-center gap-5 pr-5 pl-5'>
             <div className="flex-grow h-[1px] w-auto bg-[#3b426b] rounded-full "></div>
             <p className='text-5xl uppercase text-white'>About Me</p>
@@ -49,7 +49,7 @@ const About = () => {
               <span className="absolute left-0 bottom-0 w-full h-1 bg-blue-400 group-hover:h-full group-hover:transition-all"></span>
               <span className='relative z-20'>
                 <Link className='flex flex-row justify-center items-center' href='/contact'>
-                  <p>contact me</p>
+                  <div>contact me</div>
                   <FiExternalLink />
                 </Link>
               </span>
@@ -59,7 +59,7 @@ const About = () => {
           </p>
         </div>
 
-        <div className='flex flex-col items-center justify-center rounded-lg p-5 w-[500px] overflow-auto scrollbar gap-5 bg-gray-900'>
+        <div className='flex flex-col items-center justify-center rounded-lg p-5 scrollbar gap-5 bg-gray-900 md:w-[500px] md:overflow-auto'>
           <div className='text-center text-sm text-gray-400'>My high school graduation at White Oaks Secondary School in Oakville, Ontario.</div>
           <MyLinks />
         </div>
