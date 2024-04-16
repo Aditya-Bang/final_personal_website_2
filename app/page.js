@@ -1,6 +1,7 @@
 'use client';
 
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { useEffect, useState, useCallback } from "react";
 import { motion } from 'framer-motion';
 
@@ -52,8 +53,12 @@ const LoadingTest = () => {
 
     function loadText2() {
         const textLoader = new GLTFLoader();
+        const dracoLoader = new DRACOLoader();
+        dracoLoader.setDecoderPath("/draco/gltf/");//copypasted draco/gltf/all files in public folder
+        textLoader.setDRACOLoader(dracoLoader);
+
         textLoader.load(
-            './name/curvedname-v1.glb',
+            './name/curvedname-v2.glb',
 
             function (gltf) {
                 gltf.scene.scale.set(40, 40, 40);
