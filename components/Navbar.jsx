@@ -57,7 +57,7 @@ const Navbar = () => {
 
     return (
         <div className='flex items-center justify-evenly flex-row w-full'>
-            <div className='text-white w-full'>Aditya Bang's Personal Website</div>
+            <div className='text-white w-full'>Aditya Bang&apos;s Personal Website</div>
             <div className='flex flex-row shadow-lg-invert border text-white rounded-full p-2 items-center justify-center'>
                 {links.map((link, index) => {
 
