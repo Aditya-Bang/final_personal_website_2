@@ -1,5 +1,6 @@
 import "./globals.css";
 import StarBG2 from "@/components/StarBG2";
+import { Analytics } from "@vercel/analytics/react"
 
 // import StarBG from "@/components/StarBG";
 // import { WebVitals } from "@/components/WebVitals"; {/*<WebVitals />*/}
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
       <body className={`${anonymous_pro.className} bg-black scrollbar overflow-auto`}>
         <StarBG2/>
         <div className="absolute h-full w-full ">{children}</div>
+        <Analytics/>
       </body>
     </html>
   );
