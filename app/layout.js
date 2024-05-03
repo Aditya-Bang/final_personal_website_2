@@ -1,6 +1,7 @@
 import "./globals.css";
 import StarBG2 from "@/components/StarBG2";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // import StarBG from "@/components/StarBG";
 // import { WebVitals } from "@/components/WebVitals"; {/*<WebVitals />*/}
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
         <StarBG2/>
         <div className="absolute h-full w-full ">{children}</div>
         <Analytics/>
+        <SpeedInsights/>
       </body>
     </html>
   );
