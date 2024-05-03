@@ -332,6 +332,8 @@ const IntroLoadingAnimation = (props) => {
             // load earth model and text model
             textModel.rotation.y = Math.PI * 1.10;
             scene.add(earthModel);
+            // earthModel.rotation.x = Math.PI * 0.5
+            // earthModel.rotation.z = Math.PI * -0.4
             scene.add(textModel);
         }
 
@@ -388,7 +390,7 @@ const IntroLoadingAnimation = (props) => {
 
             // animate camera
             time = Date.now();
-            elapsedTime = time - previousTime;
+            elapsedTime = Math.min(time - previousTime, 60);
             previousTime = time;
 
             // console.log(time - startTime);

@@ -43,6 +43,7 @@ const LoadingTest = () => {
     const [animationPlayed, setAnimationPlayed] = useState(false);
     const [animationFinished, setAnimationFinished] = useState(false);
     const [playCnt, setPlayCnt] = useState(0);
+    const [playIntroLoadingScreen, setPlayIntroLoadingScreen] = useState(false);
     // const [isDesktop, setDesktop] = useState(true);
     const isDesktop = useMediaQuery(1200);
 
@@ -75,7 +76,11 @@ const LoadingTest = () => {
 
     function loadEarth() {
         const earthLoader = new GLTFLoader();
+        const dracoLoader = new DRACOLoader();
+        dracoLoader.setDecoderPath("/draco/gltf/");//copypasted draco/gltf/all files in public folder
+        earthLoader.setDRACOLoader(dracoLoader);
         earthLoader.load(
+            // './planet/EarthModel-v7.glb',
             './planet/scene.gltf',
 
             function (gltf) {
@@ -110,8 +115,15 @@ const LoadingTest = () => {
 
                 if (!textData) loadText2();
                 if (!earthData) loadEarth();
+
+                setPlayIntroLoadingScreen(true);
             }
             else {
+                setPlayIntroLoadingScreen(false);
+                setTimeout(() => {
+                    setPlayIntroLoadingScreen(true);
+                }, 900);
+
                 sessionStorage.setItem('animationPlayed', 'true');
 
                 if (!textData) loadText2();
@@ -180,7 +192,7 @@ const LoadingTest = () => {
                         </div>
                         :
                         <div>
-                            {textData && earthData ?
+                            {playIntroLoadingScreen && textData && earthData ?
                                 <div>
                                     <IntroLoadingAnimation key={playCnt} earthModel={earthData} textModel={textData} animationPlayed={false} />
                                 </div>
@@ -232,7 +244,7 @@ const LoadingTest = () => {
                         </div>
                         :
                         <div>
-                            {textData && earthData ?
+                            {playIntroLoadingScreen && textData && earthData ?
                                 <div>
                                     <IntroAnimationMobile key={playCnt} earthModel={earthData} textModel={textData} animationPlayed={false} />
                                 </div>

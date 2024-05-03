@@ -389,7 +389,7 @@ const IntroAnimationMobile = (props) => {
 
             // animate camera
             time = Date.now();
-            elapsedTime = time - previousTime;
+            elapsedTime = Math.min(time - previousTime, 60);
             previousTime = time;
 
             // console.log(time - startTime);
