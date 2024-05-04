@@ -69,7 +69,7 @@ const Navbar = () => {
                                 onMouseEnter={() => setHoverIndex(index)}
                                 onMouseLeave={() => setHoverIndex(pathname)}
                             >
-                                <Link href={link.link} className={`font-bold z-20 text-gray-200 hover:text-white pr-4 pl-4 pt-1 pb-1 rounded-full uppercase`}>{link.name}</Link>
+                                <Link href={link.link} className={`font-bold z-20 ${link.link === pathname ? 'text-white' : 'text-gray-200'} hover:text-white pr-4 pl-4 pt-1 pb-1 rounded-full uppercase`}>{link.name}</Link>
                                 <AnimatePresence>
                                     {(hoverIndex === index || hoverIndex === link.link) && (
                                         <motion.span
