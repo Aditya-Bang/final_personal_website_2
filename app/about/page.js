@@ -62,7 +62,7 @@ const About = () => {
 
         <div className='flex flex-col items-center justify-center rounded-lg p-5 scrollbar gap-5 bg-gray-900 md:w-[500px] md:overflow-auto'>
           <Image
-            src={'/AboutMeImage.jpg'}
+            src={'/assets/AboutMeImage.jpg'}
             width={250}
             height={400}
             alt='My high school graduation photo.'
