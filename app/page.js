@@ -194,7 +194,7 @@ const LoadingTest = () => {
                         <div>
                             {playIntroLoadingScreen && textData && earthData ?
                                 <div>
-                                    <IntroAnimationMobile key={playCnt} earthModel={earthData} textModel={textData} animationPlayed={false} />
+                                    <IntroAnimationMobile key={`animationHasNotPlayed ${playCnt}`} earthModel={earthData} textModel={textData} animationPlayed={false} />
                                 </div>
                                 :
                                 <IntroLoadingScreen />
@@ -236,7 +236,7 @@ const LoadingTest = () => {
                         <div>
                             {textData && earthData ?
                                 <div>
-                                    <IntroAnimationMobile key="animationhasplayed" earthModel={earthData} textModel={textData} animationPlayed={true} />
+                                    <IntroAnimationMobile key="animationhasplayedMobile" earthModel={earthData} textModel={textData} animationPlayed={true} />
                                 </div>
                                 :
                                 <div className='h-screen flex items-center justify-center'><Loader /></div>
@@ -246,7 +246,7 @@ const LoadingTest = () => {
                         <div>
                             {playIntroLoadingScreen && textData && earthData ?
                                 <div>
-                                    <IntroAnimationMobile key={playCnt} earthModel={earthData} textModel={textData} animationPlayed={false} />
+                                    <IntroAnimationMobile key={`animationHasNotPlayedMobile ${playCnt}`} earthModel={earthData} textModel={textData} animationPlayed={false} />
                                 </div>
                                 :
                                 <IntroLoadingScreen />
