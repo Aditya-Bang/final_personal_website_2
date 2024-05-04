@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from 'react';
 import Link from 'next/link';
 import { FiExternalLink  } from "react-icons/fi";
+import { usePathname } from 'next/navigation'
 
 // import { Quantico } from 'next/font/google';
 // const quantico = Quantico({
@@ -53,36 +54,27 @@ const links = [
 ]
 
 const Navbar = () => {
-    const [hoverIndex, setHoverIndex] = useState(null);
+    const pathname = usePathname()
+    const [hoverIndex, setHoverIndex] = useState(pathname);
 
     return (
         <div className='flex items-center justify-evenly flex-col gap-2 lg:gap-0 lg:flex-row w-full'>
             <div className='text-white w-full hidden lg:flex'>Aditya Bang&apos;s Personal Website</div>
             <div className='flex flex-row shadow-lg-invert border text-white rounded-full p-2 items-center justify-center md:min-w-[540px] flex-wrap'>
                 {links.map((link, index) => {
-
                     return (
-                        <div key={index}>
+                        <div key={`Navbar link ${index}`}>
                             <div
                                 className="relative flex"
                                 onMouseEnter={() => setHoverIndex(index)}
-                                onMouseLeave={() => setHoverIndex(null)}
+                                onMouseLeave={() => setHoverIndex(pathname)}
                             >
                                 <Link href={link.link} className={`font-bold z-20 text-gray-200 hover:text-white pr-4 pl-4 pt-1 pb-1 rounded-full uppercase`}>{link.name}</Link>
                                 <AnimatePresence>
-                                    {hoverIndex === index && (
+                                    {(hoverIndex === index || hoverIndex === link.link) && (
                                         <motion.span
                                             className="absolute inset-0 h-full w-full bg-gradient-to-r from-violet-600 to-indigo-600 block rounded-full"
-                                            layoutId="hoverBackground"
-                                            initial={{ opacity: 0 }}
-                                            animate={{
-                                                opacity: 1,
-                                                transition: { duration: 0.15 },
-                                            }}
-                                            exit={{
-                                                opacity: 0,
-                                                transition: { duration: 0.15, delay: 0.2 },
-                                            }}
+                                            layoutId="hoverBackgroundNavbar"
                                         />
                                     )}
                                 </AnimatePresence>

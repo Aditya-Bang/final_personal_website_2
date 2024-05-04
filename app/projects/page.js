@@ -26,7 +26,7 @@ const Projects = () => {
                     <div className='flex justify-center items-center h-full flex-row flex-wrap overflow-auto overflow-x-hidden scrollbar'>
                         {projects.map((project, index) => {
                             return (
-                                <div key={index}>
+                                <div key={`project card ${index}`}>
                                     <div
                                         className="relative group block p-1 pl-2 pr-2 h-full"
                                         onMouseEnter={() => setHoverIndex(index)}
@@ -36,7 +36,7 @@ const Projects = () => {
                                             {hoverIndex === index && (
                                                 <motion.span
                                                     className="absolute inset-0 w-full bg-gray-700 block rounded-xl"
-                                                    layoutId="hoverBackground"
+                                                    layoutId="hoverBackgroundProjects"
                                                     initial={{ opacity: 0 }}
                                                     animate={{
                                                         opacity: 1,
