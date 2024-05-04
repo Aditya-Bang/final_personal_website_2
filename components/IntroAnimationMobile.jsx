@@ -391,7 +391,6 @@ const IntroAnimationMobile = (props) => {
             time = Date.now();
             elapsedTime = Math.min(time - previousTime, 60);
             previousTime = time;
-            console.log(elapsedTime)
 
             // console.log(time - startTime);
             // console.log(t);
@@ -465,8 +464,6 @@ const IntroAnimationMobile = (props) => {
                     t = 1;
                     cameraRotation = -Math.PI / 4;
                     // spCameraX = -154;
-
-                    console.log(splineCamera.position.x, splineCamera.position.y, splineCamera.position.z)
                 }
 
                 rotateText2(elapsedTime / 1000);
