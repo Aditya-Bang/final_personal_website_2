@@ -178,109 +178,13 @@ const LoadingTest = () => {
 
     return (
         <div>
-            {!isDesktop ?
-                <div className='overflow-hidden'>
-                    {animationPlayed ?
-                        <div>
-                            {textData && earthData ?
-                                <div>
-                                    <IntroLoadingAnimation key="animationhasplayed" earthModel={earthData} textModel={textData} animationPlayed={true} />
-                                </div>
-                                :
-                                <div className='h-screen flex items-center justify-center'><Loader /></div>
-                            }
-                        </div>
-                        :
-                        <div>
-                            {playIntroLoadingScreen && textData && earthData ?
-                                <div>
-                                    <IntroLoadingAnimation key={`animationHasNotPlayed ${playCnt}`} earthModel={earthData} textModel={textData} animationPlayed={false} />
-                                </div>
-                                :
-                                <IntroLoadingScreen />
-                            }
-                        </div>
-                    }
-                    {(textData && earthData && animationFinished) &&
-                        <div className={`absolute bottom-0 right-0 text-white`}>
-                            {animationPlayed ?
-                                <motion.button
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    onClick={handleReplay}
-                                    className='z-10 m-10 bg-blue-500 pt-1 pb-1 pl-2 pr-2 rounded-lg border text-white'>
-                                    Replay Animation
-                                </motion.button>
-                                :
-                                <motion.div
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ duration: 1 }}
-                                >
-                                    <motion.button
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        onClick={handleReplay}
-                                        className='z-10 m-10 bg-blue-500 pt-1 pb-1 pl-2 pr-2 rounded-lg border text-white'>
-                                        Replay Animation
-                                    </motion.button>
-                                </motion.div>
-                            }
-
-                        </div>}
-                </div>
-                :
-                <div className='overflow-hidden'>
-                    {animationPlayed ?
-                        <div>
-                            {textData && earthData ?
-                                <div>
-                                    <IntroAnimationMobile key="animationhasplayedMobile" earthModel={earthData} textModel={textData} animationPlayed={true} />
-                                </div>
-                                :
-                                <div className='h-screen flex items-center justify-center'><Loader /></div>
-                            }
-                        </div>
-                        :
-                        <div>
-                            {playIntroLoadingScreen && textData && earthData ?
-                                <div>
-                                    <IntroAnimationMobile key={`animationHasNotPlayedMobile ${playCnt}`} earthModel={earthData} textModel={textData} animationPlayed={false} />
-                                </div>
-                                :
-                                <IntroLoadingScreen />
-                            }
-                        </div>
-                    }
-                    {(textData && earthData && animationFinished) &&
-                        <div className={`absolute bottom-0 right-0 text-white`}>
-                            {animationPlayed ?
-                                <motion.button
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    onClick={handleReplay}
-                                    className='z-10 m-10 bg-blue-500 pt-1 pb-1 pl-2 pr-2 rounded-lg border text-white'>
-                                    Replay Animation
-                                </motion.button>
-                                :
-                                <motion.div
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ duration: 1 }}
-                                >
-                                    <motion.button
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        onClick={handleReplay}
-                                        className='z-10 m-10 bg-blue-500 pt-1 pb-1 pl-2 pr-2 rounded-lg border text-white'>
-                                        Replay Animation
-                                    </motion.button>
-                                </motion.div>
-                            }
-
-                        </div>}
-                </div>
-            }
+        {playIntroLoadingScreen && textData && earthData ?
+            <div>
+                <IntroLoadingAnimation key={`animationHasNotPlayed ${playCnt}`} earthModel={earthData} textModel={textData} animationPlayed={false} />
+            </div>
+            :
+            <IntroLoadingScreen />
+        }
         </div>
     )
 }
