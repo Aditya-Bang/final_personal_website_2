@@ -80,8 +80,8 @@ const LoadingTest = () => {
         dracoLoader.setDecoderPath("/draco/gltf/");//copypasted draco/gltf/all files in public folder
         earthLoader.setDRACOLoader(dracoLoader);
         earthLoader.load(
-            './planet/EarthModel-v7.glb',
-            // './planet/scene.gltf',
+            //'./planet/EarthModel-v7.glb',
+            './planet/scene.gltf',
 
             function (gltf) {
                 gltf.scene.scale.set(ETscale, ETscale, ETscale);
