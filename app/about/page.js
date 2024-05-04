@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Link from 'next/link';
 import { FiExternalLink } from 'react-icons/fi';
 import MyLinks from '@/components/MyLinks';
+import Image from 'next/image';
 
 // import { Quantico } from 'next/font/google';
 // const quantico = Quantico({
@@ -60,7 +61,13 @@ const About = () => {
         </div>
 
         <div className='flex flex-col items-center justify-center rounded-lg p-5 scrollbar gap-5 bg-gray-900 md:w-[500px] md:overflow-auto'>
-          <div className='text-center text-sm text-gray-400'>My high school graduation at White Oaks Secondary School in Oakville, Ontario.</div>
+          <Image
+            src={'/AboutMeImage.jpg'}
+            width={250}
+            height={400}
+            alt='My high school graduation photo.'
+          />
+          <div className='text-center text-sm text-gray-400'>My high school graduation photo at White Oaks Secondary School in Oakville, Ontario.</div>
           <MyLinks />
         </div>
 

@@ -4,7 +4,7 @@ import { FiExternalLink } from 'react-icons/fi'
 
 const CertificationCard = (props) => {
   return (
-    <div className='flex h-full bg-gray-800 hover:bg-gray-700 rounded-lg p-2 text-white min-h-[135px] flex-col md:flex-row gap-2'>
+    <div className='flex h-full bg-gray-800 hover:bg-gray-700 rounded-lg p-2 text-white min-h-[160px] flex-col md:flex-row gap-2'>
       <div className='flex flex-col items-center justify-center min-w-[160px] text-center gap-2'>
         <div className='text-lg font-bold text-blue-400 uppercase'>{props.name}</div>
         <div className='text-xs text-indigo-500 font-bold'>{props.provider}</div>

@@ -64,11 +64,11 @@ const Navbar = () => {
                     return (
                         <div key={index}>
                             <div
-                                className="relative flex pr-4 pl-4 pt-1 pb-1"
+                                className="relative flex"
                                 onMouseEnter={() => setHoverIndex(index)}
                                 onMouseLeave={() => setHoverIndex(null)}
                             >
-                                <Link href={link.link} className={`font-bold z-20 text-gray-200 hover:text-white uppercase`}>{link.name}</Link>
+                                <Link href={link.link} className={`font-bold z-20 text-gray-200 hover:text-white pr-4 pl-4 pt-1 pb-1 rounded-full uppercase`}>{link.name}</Link>
                                 <AnimatePresence>
                                     {hoverIndex === index && (
                                         <motion.span

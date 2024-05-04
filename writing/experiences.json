@@ -8,5 +8,25 @@
         "name": "WOSS CS Club Executive",
         "date": "September 2022 - June 2023",
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy took a galley of type and scrambled it to make a type specimen book."
+    },
+    {
+        "name": "Michigan Math and Science Scholars",
+        "date": "June 2022",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+    },
+    {
+        "name": "HDSB Hackathon Director of Outreach",
+        "date": "January 2023 - March 2023",
+        "description": "Something ply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of"
+    },
+    {
+        "name": "Bronze Cross",
+        "date": "September 2019 - January 2020",
+        "description": "bronze cross swimming something"
+    },
+    {
+        "name": "CyberSeniors Volunteer",
+        "date": "June 2021 - March 2023",
+        "description": "something"
     }
 ]

@@ -70,7 +70,7 @@ const Projects = () => {
                 <div className='md:w-[330px] md:min-w-[330px] flex flex-col p-2 rounded-lg gap-5 bg-gray-900 mr-5 ml-5 md:m-0'>
                     <div className='flex w-full flex-row items-center justify-center gap-5 pr-5 pl-5'>
                         <div className="flex-grow h-[1px] w-auto bg-[#3b426b] rounded-full"></div>
-                        <div className='text-2xl uppercase text-center text-white'>Technologies</div>
+                        <div className='text-2xl uppercase text-center text-white'>Technologies, Frameworks, and Tools</div>
                         <div className="flex-grow h-[1px] w-auto bg-[#3b426b] rounded-full "></div>
                     </div>
                     <Technology2 />

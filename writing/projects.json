@@ -26,21 +26,21 @@
         "demo": "https://studai-8en7.onrender.com/"
     },
     {
-        "name": "Personal Website",
+        "name": "UW Tunnels Mobile App",
         "description": "Has many thing in it.",
         "tags": [
             {
-                "name": "React",
+                "name": "React Native",
                 "color": "blue"
             },
             {
-                "name": "Tailwind",
+                "name": "NativeWind",
                 "color": "indigo"
             }
         ],
-        "image": "/projectimgs/PersonalWebsite.png",
-        "alt": "Personal Website Image",
-        "source_code_link": "https://github.com/Aditya-Bang/final_personal_website_2",
+        "image": "/projectimgs/UWTunnels.png",
+        "alt": "Tunnels App Image",
+        "source_code_link": "https://github.com/Aditya-Bang/UWTunnelsApp",
         "demo": ""
     },
     {
@@ -70,9 +70,27 @@
                 "color": "yellow"
             }
         ],
-        "image": "/projectimgs/CreatePage.png",
+        "image": "/projectimgs/SpaceInvaders.png",
         "alt": "Space Invader Project Image",
         "source_code_link": "",
+        "demo": "https://aditya-bang.github.io/P5-Space-Invaders-Game/"
+    },
+    {
+        "name": "Personal Website",
+        "description": "Has many thing in it.",
+        "tags": [
+            {
+                "name": "React",
+                "color": "blue"
+            },
+            {
+                "name": "Tailwind",
+                "color": "indigo"
+            }
+        ],
+        "image": "/projectimgs/PersonalWebsite.png",
+        "alt": "Personal Website Project Image",
+        "source_code_link": "https://github.com/Aditya-Bang/final_personal_website_2",
         "demo": ""
     }
 ]
