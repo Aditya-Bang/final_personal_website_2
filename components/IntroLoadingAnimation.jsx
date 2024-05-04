@@ -58,6 +58,14 @@ const IntroLoadingAnimation = (props) => {
         const currentRefValue = mountRef.current;
         var animationFrameID = null;
 
+        if (animationPlayed) {
+            setMountHeader(true);
+        } else {
+            setTimeout(() => {
+                setMountHeader(true);
+            }, 9500)
+        }
+
         const BLOOM_SCENE = 1;
 
         const bloomLayer = new THREE.Layers();
@@ -403,7 +411,7 @@ const IntroLoadingAnimation = (props) => {
 
                 textModel.rotation.y = 0;
 
-                if (!mountHeader) setMountHeader(true);
+                // if (!mountHeader) setMountHeader(true);
             } else {
                 if (pickNext != 0) {
 
@@ -456,7 +464,7 @@ const IntroLoadingAnimation = (props) => {
                         spCameraX = -154;
                     }
 
-                    if (!mountHeader && t > 0.8) setMountHeader(true);
+                    // if (!mountHeader && t > 0.8) setMountHeader(true);
 
                     cameraHelper.update();
 
