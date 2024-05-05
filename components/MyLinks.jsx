@@ -4,6 +4,7 @@ import { FaGithub } from "react-icons/fa";
 import { CiLinkedin } from "react-icons/ci";
 import { MdEmail } from "react-icons/md";
 import { IoNewspaperSharp } from "react-icons/io5";
+import resume from "../writing/resume.json";
 
 const MyLinks = (props) => {
     return (
@@ -17,7 +18,7 @@ const MyLinks = (props) => {
             <Link href='mailto:a3bang@uwaterloo.ca' target='_blank'>
                 <MdEmail className='text-white w-10 h-10 hover:cursor-pointer hover:text-indigo-600' />
             </Link>
-            <Link href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' target='_blank'>
+            <Link href={resume.link} target='_blank'>
                 <IoNewspaperSharp className='text-white w-10 h-10 hover:cursor-pointer hover:text-indigo-600' />
             </Link>
         </div>

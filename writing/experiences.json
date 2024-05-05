@@ -1,32 +1,32 @@
 [
     {
         "name": "UW CSC Events Coordinator",
-        "date": "January 2023 - Present",
-        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+        "date": "January 2024 - Present",
+        "description": "Plan and execute large-scale events that benefit students interested in CS, ranging from social events to fun competitions to professional networking."
     },
     {
         "name": "WOSS CS Club Executive",
         "date": "September 2022 - June 2023",
-        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy took a galley of type and scrambled it to make a type specimen book."
+        "description": "Created and taught weekly C++ lessons on graph theory, dynamic programming, and data structures for 25-40 club members, alongside leading live problem-solving sessions."
     },
     {
         "name": "Michigan Math and Science Scholars",
         "date": "June 2022",
-        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+        "description": "Attended an invitational, residential math program held by the University of Michigan, Ann Arbor. Learned about graduate-level STEM topics in pure mathematics such as topology, set theory, and Brouwer's Fixed Point Theorem through rigorous coursework taught by university faculty."
     },
     {
         "name": "HDSB Hackathon Director of Outreach",
         "date": "January 2023 - March 2023",
-        "description": "Something ply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of"
+        "description": "Helped organize the first-ever hackathon under HDSB for over 200 individual participants. Raised over $8000 in sponsorships for prizes."
     },
     {
         "name": "Bronze Cross",
-        "date": "September 2019 - January 2020",
-        "description": "bronze cross swimming something"
+        "date": "December 2018 - March 2019",
+        "description": "Attended an Assistant Lifeguard Bronze Cross Certification and Standard First Aid certification program. Developed leadership and communication skills with fellow lifeguards. "
     },
     {
         "name": "CyberSeniors Volunteer",
         "date": "June 2021 - March 2023",
-        "description": "something"
+        "description": "Led online seminars about technology (approx. 30 seniors), engaged seniors through group discussion, mentored seniors in one-on-one support calls."
     }
 ]

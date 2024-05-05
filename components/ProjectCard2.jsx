@@ -4,7 +4,7 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 
 const ProjectCard2 = (props) => {
     return (
-        <div className='flex flex-col w-[250px] h-[320px] z-20 relative rounded-lg bg-gray-800 border border-gray-600'>
+        <div className='flex flex-col w-[250px] h-[400px] z-20 relative rounded-lg bg-gray-800 border border-gray-600'>
             <div className='w-full h-[120px] overflow-hidden rounded-t-lg relative'>
                 <Image
                     src={props.image}

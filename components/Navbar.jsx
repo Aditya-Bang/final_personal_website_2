@@ -7,6 +7,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { FiExternalLink  } from "react-icons/fi";
 import { usePathname } from 'next/navigation'
+import resume from "../writing/resume.json"
 
 // import { Quantico } from 'next/font/google';
 // const quantico = Quantico({
@@ -98,7 +99,7 @@ const Navbar = () => {
                 <div className="relative group">
                     <span className="absolute left-0 bottom-0 w-full h-1 bg-blue-400 group-hover:h-full group-hover:transition-all"></span>
                     <span className='relative z-20'>
-                        <Link className='flex flex-row justify-center items-center gap-2' target='_blank' href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>
+                        <Link className='flex flex-row justify-center items-center gap-2' target='_blank' href={resume.link}>
                             <p>My Resume</p>
                             <FiExternalLink />
                         </Link>

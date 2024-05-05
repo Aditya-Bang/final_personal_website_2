@@ -1,14 +1,14 @@
 [
     {
         "name": "Stud.AI",
-        "description": "Stud.AI Description TODO. sadflk;a dsal;kjf  ;lak jdsf;lkj a; ;kajd f;lksajd flkja lkaj;ds f",
+        "description": "An AI based study tool that uses a combination of NLP and image processing to generate a set of practice questions from student-provided notes, for students to test their knowledge.",
         "tags": [
             {
                 "name": "React",
                 "color": "blue"
             },
             {
-                "name": "Mongodb",
+                "name": "Node",
                 "color": "green"
             },
             {
@@ -18,6 +18,14 @@
             {
                 "name": "Redux",
                 "color": "indigo"
+            },
+            {
+                "name": "MongoDB",
+                "color": "green"
+            },
+            {
+                "name": "Cohere",
+                "color": "yellow"
             }
         ],
         "image": "/projectimgs/StudAI.png",
@@ -27,7 +35,7 @@
     },
     {
         "name": "UW Tunnels Mobile App",
-        "description": "Has many thing in it.",
+        "description": "A cross-platform mobile app enabling University of Waterloo students to efficiently navigate between classes by identifying the shortest route through campus tunnels.",
         "tags": [
             {
                 "name": "React Native",
@@ -45,15 +53,27 @@
     },
     {
         "name": "CreatePage",
-        "description": "Create our own webpages.",
+        "description": "A user-friendly full-stack Flask application enabling intuitive webpage creation, styling, and storage without the need for programming knowledge.",
         "tags": [
             {
+                "name": "HTML",
+                "color": "red"
+            },
+            {
+                "name": "CSS",
+                "color": "blue"
+            },
+            {
+                "name": "Javascript",
+                "color": "yellow"
+            },
+            {
                 "name": "Flask",
-                "color": "green"
+                "color": "gray"
             },
             {
                 "name": "SQLite",
-                "color": "pink"
+                "color": "blue"
             }
         ],
         "image": "/projectimgs/CreatePage.png",
@@ -63,7 +83,7 @@
     },
     {
         "name": "Space Invader Javascript Game",
-        "description": "Javascript Game space invaders",
+        "description": "A P5 Javascript Space Invaders Game.",
         "tags": [
             {
                 "name": "Javascript",
@@ -74,23 +94,5 @@
         "alt": "Space Invader Project Image",
         "source_code_link": "",
         "demo": "https://aditya-bang.github.io/P5-Space-Invaders-Game/"
-    },
-    {
-        "name": "Personal Website",
-        "description": "Has many thing in it.",
-        "tags": [
-            {
-                "name": "React",
-                "color": "blue"
-            },
-            {
-                "name": "Tailwind",
-                "color": "indigo"
-            }
-        ],
-        "image": "/projectimgs/PersonalWebsite.png",
-        "alt": "Personal Website Project Image",
-        "source_code_link": "https://github.com/Aditya-Bang/final_personal_website_2",
-        "demo": ""
     }
 ]

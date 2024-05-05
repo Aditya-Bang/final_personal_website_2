@@ -74,5 +74,9 @@
     {
         "name": "Next JS",
         "icon": "Next"
+    },
+    {
+        "name": "AWS",
+        "icon": "AWS"
     }
 ]
