@@ -15,8 +15,8 @@ const anonymous_pro = Anonymous_Pro({
 });
 
 export const metadata = {
-  title: "AB Personal Website",
-  description: "Aditya Bang's Personal Website",
+  title: "AB Portfolio Website",
+  description: "Aditya Bang's Portfolio Website",
   keywords: ["aditya bang", "aditya", "bang", "personal website", "portfolio", "web dev", "aditya developer", "mern stack", "aditya bang portfolio"]
 };
 
