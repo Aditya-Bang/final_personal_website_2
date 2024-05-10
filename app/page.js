@@ -97,7 +97,7 @@ const LoadingTest = () => {
 
     const fetchAnimationPlayed = async () => {
         try {
-            const sessionStorageAnimationPlayed = await sessionStorage.getItem('animationPlayed');
+            const sessionStorageAnimationPlayed = await localStorage.getItem('animationPlayed');
             const animationPlayedBurner = sessionStorageAnimationPlayed ? sessionStorageAnimationPlayed : 'false';
             if (animationPlayedBurner == 'true') {
                 setAnimationPlayed(true);
@@ -124,7 +124,7 @@ const LoadingTest = () => {
                     setPlayIntroLoadingScreen(true);
                 }, 900);
 
-                sessionStorage.setItem('animationPlayed', 'true');
+                localStorage.setItem('animationPlayed', 'true');
 
                 if (!textData) loadText2();
                 if (!earthData) loadEarth();
@@ -167,7 +167,7 @@ const LoadingTest = () => {
 
     // const replayAnimation = async () => {
     //     console.log("Replaying Animation");
-    //     sessionStorage.setItem('animationPlayed', 'false');
+    //     localStorage.setItem('animationPlayed', 'false');
     //     setBtnDisabled(true);
     //     setAnimationPlayed("false");
     //     fetchAnimationPlayed();
