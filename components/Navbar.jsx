@@ -60,7 +60,7 @@ const Navbar = () => {
 
     return (
         <div className='flex items-center justify-evenly flex-col gap-2 lg:gap-0 lg:flex-row w-full'>
-            <div className='text-white w-full hidden lg:flex'>Aditya Bang&apos;s Personal Website</div>
+            <div className='text-white w-full hidden lg:flex'>Aditya Bang&apos;s Portfolio Website</div>
             <div className='flex flex-row shadow-lg-invert border text-white rounded-full p-2 items-center justify-center md:min-w-[540px] flex-wrap'>
                 {links.map((link, index) => {
                     return (
