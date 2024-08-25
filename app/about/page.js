@@ -44,7 +44,7 @@ const About = () => {
             Beyond academics, I enjoy swimming and got my Bronze Cross Assistant lifeguard certification in 2019. I also like watching basketball.
           </p>
           <p className='text-xl'>
-            Currently, I&apos;m seeking internships for the Fall of 2024. Please don&apos;t hesitate to&nbsp;
+            Currently, I&apos;m seeking internships for the Summer of 2025. Please don&apos;t hesitate to&nbsp;
 
             <div className="relative group inline-flex">
               <span className="absolute left-0 bottom-0 w-full h-1 bg-blue-400 group-hover:h-full group-hover:transition-all"></span>

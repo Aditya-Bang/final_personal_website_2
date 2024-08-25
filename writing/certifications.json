@@ -16,5 +16,17 @@
         "description": "Learned about foundational computer science concepts, including algorithms, data structures, and programming languages like C, Python, and SQL. Gained proficiency in creating web applications using HTML, CSS, JavaScript, and Flask.",
         "provider": "edX",
         "credential": "https://certificates.cs50.io/52ec3212-107a-4ceb-bf46-25605193fef4.pdf?size=letter"
+    },
+    {
+        "name": "Docker",
+        "description": "Gained knowledge of Docker, including containerization, Dockerfiles, and the Docker API. Learned how to create, manage, and troubleshoot containers using the Docker CLI.",
+        "provider": "Linkedin Learning",
+        "credential": "https://www.linkedin.com/learning/certificates/479ef21f7ef5f42e358380c0bc384d5e1b3f66f2c950cf1da6a88172ec07723f?trk=share_certificate"
+    },
+    {
+        "name": "Kubernetes",
+        "description": "Gained hands-on experience in Kubernetes by creating clusters, deploying and managing containerized applications, writing YAML manifests, and troubleshooting pods.",
+        "provider": "Linkedin Learning",
+        "credential": "https://www.linkedin.com/learning/certificates/97b25269ff855e21fbc1e19513886ab6baeaf5edf9934ee01d6dd79443d6d499?trk=share_certificate"
     }
 ]
