@@ -1,5 +1,15 @@
 [
     {
+        "name": "Nokia AI/ML & Automation Intern",
+        "date": "September 2024 - December 2024",
+        "description": "Developed autonomous applications based on the OODA control loop for next-gen telecommunications networks, focusing on UPF congestion and network slice management to approach an L5 autonomous network."
+    },
+    {
+        "name": "WATonomous Software Developer",
+        "date": "September 2024 - Present",
+        "description": "Member of the autonomous software division for the UWaterloo Autonomous Vehicle Design Team. Developed control and navigation software in Python and C++ with ROS 2 for autonomous, self-driving vehicles."
+    },
+    {
         "name": "UW CSC Events Coordinator",
         "date": "January 2024 - Present",
         "description": "Plan and execute large-scale events that benefit students interested in CS, ranging from social events to fun competitions to professional networking."
