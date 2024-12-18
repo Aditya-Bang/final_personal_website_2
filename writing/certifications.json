@@ -28,5 +28,17 @@
         "description": "Gained hands-on experience in Kubernetes by creating clusters, deploying and managing containerized applications, writing YAML manifests, and troubleshooting pods.",
         "provider": "Linkedin Learning",
         "credential": "https://www.linkedin.com/learning/certificates/97b25269ff855e21fbc1e19513886ab6baeaf5edf9934ee01d6dd79443d6d499?trk=share_certificate"
+    },
+    {
+        "name": "Rust",
+        "description": "Gained knowledge on creating memory-safe, high-performance applications with Rust.",
+        "provider": "Linkedin Learning",
+        "credential": "https://www.linkedin.com/learning/certificates/6d7eeec748817238aa1eb1e69bd6db32aaa921cf4aeccc031c0e5cdb7c74d0db?trk=share_certificate"
+    },
+    {
+        "name": "Kubernetes Operators",
+        "description": "Learned how to create Kubernetes operators in Go to extend the Kubernetes API, enabling automation of complex provisioning and management tasks for more efficient and scalable cluster operations.",
+        "provider": "Linkedin Learning",
+        "credential": "https://www.linkedin.com/learning/certificates/c6b93347bb23d5b939160e5d5bbe9a31717cd7c7db2631748cd7b9c06e6ed92d?trk=share_certificate"
     }
 ]
