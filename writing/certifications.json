@@ -40,5 +40,11 @@
         "description": "Learned how to create Kubernetes operators in Go to extend the Kubernetes API, enabling automation of complex provisioning and management tasks for more efficient and scalable cluster operations.",
         "provider": "Linkedin Learning",
         "credential": "https://www.linkedin.com/learning/certificates/c6b93347bb23d5b939160e5d5bbe9a31717cd7c7db2631748cd7b9c06e6ed92d?trk=share_certificate"
+    },
+    {
+        "name": "Go",
+        "description": "Learned core concepts of the Go programming language.",
+        "provider": "Linkedin Learning",
+        "credential": "https://www.linkedin.com/learning/certificates/f9d3d267707661e70bf81b26acccd5e157e667bc0c2254c67ebe3844c6f8948e?trk=share_certificate"
     }
 ]
