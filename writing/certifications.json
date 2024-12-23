@@ -46,5 +46,11 @@
         "description": "Learned core concepts of the Go programming language.",
         "provider": "Linkedin Learning",
         "credential": "https://www.linkedin.com/learning/certificates/f9d3d267707661e70bf81b26acccd5e157e667bc0c2254c67ebe3844c6f8948e?trk=share_certificate"
+    },
+    {
+        "name": "Advanced Kubernetes",
+        "description": "Developed an in-depth understanding of Kubernetes architecture and its core components. Learned to extend the Kubernetes API and explored way to manage cloud provider resources.",
+        "provider": "Linkedin Learning",
+        "credential": "https://www.linkedin.com/learning/certificates/6fccfa88617cc58209b96fdee5d1c4b46a3dd224da01d593205ff7561c248c07?trk=share_certificate"
     }
 ]
