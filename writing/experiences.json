@@ -5,6 +5,11 @@
         "description": "Developed autonomous applications based on the OODA control loop for next-gen telecommunications networks, focusing on UPF congestion and network slice management to approach an L5 autonomous network."
     },
     {
+        "name": "UWARG Embedded Flight Software Developer",
+        "date": "January 2025 - Present",
+        "description": "Member of the embedded flight software (EFS) team in the University of Waterloo Aerial Robotics Group. Worked on firmware and embedded systems on the autonmous UAVs."
+    },
+    {
         "name": "WATonomous Software Developer",
         "date": "September 2024 - Present",
         "description": "Member of the autonomous software division for the UWaterloo Autonomous Vehicle Design Team. Developed control and navigation software in Python and C++ with ROS 2 for autonomous, self-driving vehicles."
