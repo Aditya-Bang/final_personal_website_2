@@ -35,7 +35,7 @@ const About = () => {
           </div>
 
           <p className='text-xl'>
-            Hello and welcome to my personal website. I&apos;m Aditya Bang, and I&apos;m currently a second-year&nbsp;<span className='text-blue-400'>Co-op computer science</span>&nbsp;student at the&nbsp;<span className='text-blue-400'>University of Waterloo</span>.
+            Hello and welcome to my personal website. I&apos;m Aditya Bang, and I&apos;m currently a third-year&nbsp;<span className='text-blue-400'>Co-op computer science</span>&nbsp;student at the&nbsp;<span className='text-blue-400'>University of Waterloo</span>.
           </p>
           <p className='text-xl'>
             My interests revolve around programming, mathematics, and physics. So far, I&apos;ve mainly created full-stack projects, some of which involve AI. My curiosity extends to understanding the mathematical principles behind AI through reading research papers. Additionally, I&apos;m keen on competitive programming, particularly in graph theory, and exploring pure mathematics in my classes at UWaterloo.
