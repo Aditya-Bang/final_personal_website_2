@@ -94,6 +94,16 @@
         "demo": "https://studai-8en7.onrender.com/"
     },
     {
+        "name": "Analyzing Algorithms That Break RSA",
+        "description": "A research paper analyzing algorithms for factoring large integers, including Shor's Algorithm for quantum computers, and their potential to break modern RSA encryption.",
+        "tags": [],
+        "image": "/projectimgs/EE.png",
+        "alt": "Research Paper Image: Analyzing Algorithms That Break RSA",
+        "source_code_link": "",
+        "demo": "https://drive.google.com/file/d/1U4Du3pKF1gDcVdFR1k6y1ZjpfDD_UURd/view?usp=sharing",
+        "isPaper": true
+    },
+    {
         "name": "UW Tunnels Mobile App",
         "description": "A cross-platform mobile app enabling University of Waterloo students to efficiently navigate between classes by identifying the shortest route through campus tunnels.",
         "tags": [

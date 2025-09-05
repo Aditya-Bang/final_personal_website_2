@@ -59,6 +59,7 @@ const Projects = () => {
                                             tags={project.tags}
                                             source_code_link={project.source_code_link}
                                             demo={project.demo}
+                                            isPaper={project.isPaper ?? false}
                                         />
                                     </div>
                                 </div>

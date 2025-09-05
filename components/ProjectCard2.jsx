@@ -17,16 +17,19 @@ const ProjectCard2 = (props) => {
                     }}
                 />
             </div>
-            <a href={props.source_code_link} target="_blank" className='absolute rounded-full bg-black border-2 border-black top-0 right-0 m-1 h-10 w-10'>
-                <img
-                    src='./assets/github2.png'
-                    alt='source code'
-                    className='object-contain'
-                />
-            </a>
+            {props.source_code_link && props.source_code_link.trim() !== "" && (
+                <a href={props.source_code_link} target="_blank" className='absolute rounded-full bg-black border-2 border-black top-0 right-0 m-1 h-10 w-10'>
+                    <img
+                        src='./assets/github2.png'
+                        alt='source code'
+                        className='object-contain'
+                    />
+                </a>
+            )}
+            
             {props.demo ?
                 <a href={props.demo} target="_blank" className="inline-flex items-center p-2 text-sm text-center text-white rounded-lg  focus:ring-4 focus:outline-none bg-blue-600 hover:bg-blue-700 focus:ring-blue-800 absolute top-0 left-0 m-1">
-                    Demo&nbsp;
+                    {props.isPaper ? "Paper" : "Demo"}&nbsp;
                     <FaExternalLinkAlt />
                 </a> : null
             }
