@@ -1,18 +1,23 @@
 [
     {
+        "name": "Nokia AI/ML & Full-stack Intern",
+        "date": "May 2025 - August 2025",
+        "description": "Built a cloud-native multi-agent LLM system with RAG-driven chain-of-thought analysis and MCP-based network reconfiguration to autonomously resolve 5G network issues."
+    },
+    {
+        "name": "Undergraduate Research Assistant",
+        "date": "September 2025 - Present",
+        "description": "Designed privacy-preserving inference algorithms and defense mechanisms leveraging cryptography, differential privacy, and machine learning, under Dr. Florian Kerschbaum."
+    },
+    {
         "name": "Nokia AI/ML & Automation Intern",
         "date": "September 2024 - December 2024",
         "description": "Developed autonomous applications based on the OODA control loop for next-gen telecommunications networks, focusing on UPF congestion and network slice management to approach an L5 autonomous network."
     },
     {
-        "name": "UWARG Embedded Flight Software Developer",
+        "name": "UWARG Embedded Flight Software Developer & Project Manager",
         "date": "January 2025 - Present",
-        "description": "Member of the embedded flight software (EFS) team in the University of Waterloo Aerial Robotics Group. Worked on firmware and embedded systems on the autonmous UAVs."
-    },
-    {
-        "name": "WATonomous Software Developer",
-        "date": "September 2024 - Present",
-        "description": "Member of the autonomous software division for the UWaterloo Autonomous Vehicle Design Team. Developed control and navigation software in Python and C++ with ROS 2 for autonomous, self-driving vehicles."
+        "description": "Project manager on the embedded flight software (EFS) team in the University of Waterloo Aerial Robotics Group. Worked on firmware and embedded systems for the autonomous UAVs."
     },
     {
         "name": "UW CSC Events Coordinator",

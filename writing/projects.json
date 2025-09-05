@@ -1,5 +1,65 @@
 [
     {
+        "name": "MinesweeperGPT",
+        "description": "Fine-tuned a large language model with quantized low-rank adaptation and reinforcement learning (GRPO) to play Minesweeper, increasing move accuracy by 11%.",
+        "tags": [
+            {
+                "name": "Python",
+                "color": "yellow"
+            },
+            {
+                "name": "Unsloth",
+                "color": "green"
+            },
+            {
+                "name": "Hugging Face Transformers",
+                "color": "red"
+            },
+            {
+                "name": "TRL",
+                "color": "purple"
+            },
+            {
+                "name": "Wandb",
+                "color": "gray"
+            },
+            {
+                "name": "vLLM",
+                "color": "red"
+            }
+        ],
+        "image": "/projectimgs/MinesweeperGPT.png",
+        "alt": "MinesweeperGPT Project Image",
+        "source_code_link": "https://github.com/Aditya-Bang/MinesweeperGPT",
+        "demo": ""
+    },
+    {
+        "name": "GraphCuda",
+        "description": "Built a high-performance GPU library for Graph Neural Networks (GNNs) with custom CUDA C++ kernels, reducing training time by up to 37% compared to PyTorch-native implementations.",
+        "tags": [
+            {
+                "name": "Python",
+                "color": "yellow"
+            },
+            {
+                "name": "C++",
+                "color": "blue"
+            },
+            {
+                "name": "CUDA",
+                "color": "green"
+            },
+            {
+                "name": "PyTorch",
+                "color": "orange"
+            }
+        ],
+        "image": "/projectimgs/GraphCuda.png",
+        "alt": "GraphCuda Project Image",
+        "source_code_link": "https://github.com/Aditya-Bang/GraphCuda",
+        "demo": ""
+    },
+    {
         "name": "Stud.AI",
         "description": "An AI based study tool that uses a combination of NLP and image processing to generate a set of practice questions from student-provided notes, for students to test their knowledge.",
         "tags": [
