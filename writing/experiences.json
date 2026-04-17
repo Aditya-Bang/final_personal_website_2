@@ -1,12 +1,17 @@
 [
     {
+        "name": "Fable Therapeutics Machine Learning Operations Intern",
+        "date": "Jan 2026 - April 2026",
+        "description": "Built and optimized machine learning infrastructure for drug discovery by developing custom GPU kernels, profiling PyTorch models, building AWS deployment pipelines for HPC workloads, and creating monitoring pipelines."
+    },
+    {
         "name": "Nokia AI/ML & Full-stack Intern",
         "date": "May 2025 - August 2025",
         "description": "Built a cloud-native multi-agent LLM system with RAG-driven chain-of-thought analysis and MCP-based network reconfiguration to autonomously resolve 5G network issues."
     },
     {
         "name": "Undergraduate Research Assistant",
-        "date": "September 2025 - Present",
+        "date": "September 2025 - December 2025",
         "description": "Designed privacy-preserving inference algorithms and defense mechanisms leveraging cryptography, differential privacy, and machine learning, under Dr. Florian Kerschbaum."
     },
     {
@@ -21,7 +26,7 @@
     },
     {
         "name": "UW CSC Events Coordinator",
-        "date": "January 2024 - Present",
+        "date": "January 2024 - August 2024",
         "description": "Plan and execute large-scale events that benefit students interested in CS, ranging from social events to fun competitions to professional networking."
     },
     {
