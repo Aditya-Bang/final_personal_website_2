@@ -46,6 +46,15 @@ const IntroHeader = (props) => {
                 <div aria-hidden className="Title__filled">Projects</div>
               </div>
             </Link>
+            <Link href='/blogs'>
+              <div className="Title">
+                <h1>Blogs
+                  <div className="Title__highlight"></div>
+                </h1>
+                <div className="Title__underline"></div>
+                <div aria-hidden className="Title__filled">Blogs</div>
+              </div>
+            </Link>
             <Link href='/qualifications'>
               <div className="Title ">
                 <h1>Qualifications
@@ -55,16 +64,6 @@ const IntroHeader = (props) => {
                 <div aria-hidden className="Title__filled">Qualifications</div>
               </div>
             </Link>
-            <Link href='/contact'>
-              <div className="Title ">
-                <h1>Contact
-                  <div className="Title__highlight"></div>
-                </h1>
-                <div className="Title__underline"></div>
-                <div aria-hidden className="Title__filled">Contact</div>
-              </div>
-            </Link>
-
           </div>
         </div>
         :
@@ -92,6 +91,15 @@ const IntroHeader = (props) => {
                 <div aria-hidden className="Title__filled">Projects</div>
               </div>
             </Link>
+            <Link href='/blogs'>
+              <div className="Title">
+                <h1>Blogs
+                  <div className="Title__highlight"></div>
+                </h1>
+                <div className="Title__underline"></div>
+                <div aria-hidden className="Title__filled">Blogs</div>
+              </div>
+            </Link>
             <Link href='/qualifications'>
               <div className="Title ">
                 <h1>Qualifications
@@ -101,16 +109,6 @@ const IntroHeader = (props) => {
                 <div aria-hidden className="Title__filled">Qualifications</div>
               </div>
             </Link>
-            <Link href='/contact'>
-              <div className="Title ">
-                <h1>Contact
-                  <div className="Title__highlight"></div>
-                </h1>
-                <div className="Title__underline"></div>
-                <div aria-hidden className="Title__filled">Contact</div>
-              </div>
-            </Link>
-
           </div>
         </motion.div>
       }

@@ -45,6 +45,10 @@ const links = [
         link: "/projects",
     },
     {
+        name: "Blogs",
+        link: "/blogs",
+    },
+    {
         name: "Qualifications",
         link: "/qualifications",
     },
@@ -57,11 +61,12 @@ const links = [
 const Navbar = () => {
     const pathname = usePathname()
     const [hoverIndex, setHoverIndex] = useState(pathname);
+    const isActiveLink = (link) => link === "/" ? pathname === link : pathname.startsWith(link);
 
     return (
-        <div className='flex items-center justify-evenly flex-col gap-2 lg:gap-0 lg:flex-row w-full'>
-            <div className='text-white w-full hidden lg:flex'>Aditya Bang&apos;s Portfolio Website</div>
-            <div className='flex flex-row shadow-lg-invert border text-white rounded-full p-2 items-center justify-center md:min-w-[540px] flex-wrap'>
+        <div className='flex items-center justify-evenly flex-col gap-2 xl:gap-0 xl:flex-row w-full'>
+            <div className='text-white hidden whitespace-nowrap xl:flex xl:flex-1'>Aditya Bang&apos;s Portfolio Website</div>
+            <div className='flex max-w-full flex-row flex-wrap items-center justify-center rounded-full border p-2 text-white shadow-lg-invert md:flex-nowrap xl:flex-none'>
                 {links.map((link, index) => {
                     return (
                         <div key={`Navbar link ${index}`}>
@@ -70,9 +75,9 @@ const Navbar = () => {
                                 onMouseEnter={() => setHoverIndex(index)}
                                 onMouseLeave={() => setHoverIndex(pathname)}
                             >
-                                <Link href={link.link} className={`font-bold z-20 ${link.link === pathname ? 'text-white' : 'text-gray-200'} hover:text-white pr-4 pl-4 pt-1 pb-1 rounded-full uppercase`}>{link.name}</Link>
+                                <Link href={link.link} className={`font-bold z-20 ${isActiveLink(link.link) ? 'text-white' : 'text-gray-200'} hover:text-white pr-4 pl-4 pt-1 pb-1 rounded-full uppercase`}>{link.name}</Link>
                                 <AnimatePresence>
-                                    {(hoverIndex === index || hoverIndex === link.link) && (
+                                    {(hoverIndex === index || (hoverIndex === pathname && isActiveLink(link.link))) && (
                                         <motion.span
                                             className="absolute inset-0 h-full w-full bg-gradient-to-r from-violet-600 to-indigo-600 block rounded-full"
                                             layoutId="hoverBackgroundNavbar"
@@ -86,11 +91,11 @@ const Navbar = () => {
                 })}
             </div>
 
-            <div className='text-white w-full flex-row justify-center lg:justify-end gap-5 flex'>
+            <div className='text-white w-full flex-row justify-center xl:justify-end gap-5 flex xl:flex-1'>
                 <div className="relative group">
                     <span className="absolute left-0 bottom-0 w-full h-1 bg-blue-400 group-hover:h-full group-hover:transition-all"></span>
                     <span className='relative z-20'>
-                        <Link className='flex flex-row justify-center items-center gap-2' target='_blank' href='https://www.linkedin.com/in/adi-bang/'>
+                        <Link className='flex flex-row justify-center items-center gap-2 whitespace-nowrap' target='_blank' href='https://www.linkedin.com/in/adi-bang/'>
                             <p>Linkedin</p>
                             <FiExternalLink />
                         </Link>
@@ -99,7 +104,7 @@ const Navbar = () => {
                 <div className="relative group">
                     <span className="absolute left-0 bottom-0 w-full h-1 bg-blue-400 group-hover:h-full group-hover:transition-all"></span>
                     <span className='relative z-20'>
-                        <Link className='flex flex-row justify-center items-center gap-2' target='_blank' href={resume.link}>
+                        <Link className='flex flex-row justify-center items-center gap-2 whitespace-nowrap' target='_blank' href={resume.link}>
                             <p>My Resume</p>
                             <FiExternalLink />
                         </Link>
