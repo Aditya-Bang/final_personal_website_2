@@ -54,6 +54,20 @@
         ]
       },
       {
+        "type": "paragraph",
+        "parts": [
+          {
+            "text": "Math can now be embedded inline too, such as $x_i = a_i + b_i$, without changing the surrounding paragraph structure."
+          }
+        ]
+      },
+      {
+        "type": "equation",
+        "id": "equation-block-example",
+        "math": "x_i = a_i + b_i",
+        "caption": "The same expression rendered as a centered equation block."
+      },
+      {
         "type": "code",
         "id": "blog-block-example",
         "language": "json",

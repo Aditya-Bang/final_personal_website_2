@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
+import katex from 'katex';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -27,9 +28,101 @@ const buildOutline = (content) => {
     return outline;
 };
 
+const isEscaped = (text, index) => {
+    let slashCount = 0;
+
+    for (let position = index - 1; position >= 0 && text[position] === '\\'; position -= 1) {
+        slashCount += 1;
+    }
+
+    return slashCount % 2 === 1;
+};
+
+const findInlineMathDelimiter = (text, startIndex) => {
+    for (let index = startIndex; index < text.length; index += 1) {
+        if (text[index] === '$' && text[index + 1] !== '$' && !isEscaped(text, index)) {
+            return index;
+        }
+    }
+
+    return -1;
+};
+
+const splitInlineMath = (text) => {
+    const segments = [];
+    let cursor = 0;
+
+    while (cursor < text.length) {
+        const start = findInlineMathDelimiter(text, cursor);
+
+        if (start === -1) {
+            segments.push({ type: 'text', text: text.slice(cursor) });
+            break;
+        }
+
+        const end = findInlineMathDelimiter(text, start + 1);
+
+        if (end === -1) {
+            segments.push({ type: 'text', text: text.slice(cursor) });
+            break;
+        }
+
+        if (start > cursor) {
+            segments.push({ type: 'text', text: text.slice(cursor, start) });
+        }
+
+        segments.push({ type: 'math', math: text.slice(start + 1, end) });
+        cursor = end + 1;
+    }
+
+    return segments;
+};
+
+const getMathMarkup = (math, displayMode = false) => ({
+    __html: katex.renderToString(math, {
+        displayMode,
+        throwOnError: false,
+    }),
+});
+
+const MathInline = ({ math }) => (
+    <span
+        className="mx-1 text-blue-100"
+        dangerouslySetInnerHTML={getMathMarkup(math)}
+    />
+);
+
+const MathBlock = ({ block }) => (
+    <figure id={block.id} className="scroll-mt-8 rounded-xl border border-[#3b426b] bg-slate-950/70 px-4 py-5">
+        <div
+            className="overflow-x-auto text-center text-blue-100 scrollbar"
+            dangerouslySetInnerHTML={getMathMarkup(block.math || block.equation, true)}
+        />
+        {block.caption && (
+            <figcaption className="mt-4 border-t border-[#3b426b] pt-3 text-sm text-gray-400">
+                {block.caption}
+            </figcaption>
+        )}
+    </figure>
+);
+
+const renderTextWithMath = (text, keyPrefix) => (
+    splitInlineMath(text).map((segment, index) => {
+        if (segment.type === 'math') {
+            return <MathInline key={`${keyPrefix}-math-${index}`} math={segment.math} />;
+        }
+
+        return <span key={`${keyPrefix}-text-${index}`}>{segment.text.replace(/\\\$/g, '$')}</span>;
+    })
+);
+
 const InlineText = ({ parts }) => (
     <>
         {parts.map((part, index) => {
+            if (part.math || part.equation) {
+                return <MathInline key={`math-${index}`} math={part.math || part.equation} />;
+            }
+
             if (part.href) {
                 return (
                     <a
@@ -39,12 +132,12 @@ const InlineText = ({ parts }) => (
                         rel="noreferrer"
                         className="text-blue-300 underline decoration-blue-400/60 underline-offset-4 transition-colors hover:text-blue-200"
                     >
-                        {part.text}
+                        {renderTextWithMath(part.text, `link-${index}`)}
                     </a>
                 );
             }
 
-            return <span key={`text-${index}`}>{part.text}</span>;
+            return renderTextWithMath(part.text, `text-${index}`);
         })}
     </>
 );
@@ -128,6 +221,10 @@ const BlogArticle = ({ blog }) => {
 
         if (block.type === 'code') {
             return <CodeBlock key={block.id} block={block} />;
+        }
+
+        if (block.type === 'equation') {
+            return <MathBlock key={block.id || `equation-${index}`} block={block} />;
         }
 
         if (block.type === 'image') {
