@@ -1,6 +1,7 @@
 {
   "slug": "fused-spmm-gemm-part-1",
   "title": "Fusing Sparse-Dense and Dense-Dense Matrix Multiplication: Part 1",
+  "descriptionCard": "Optimizing a fused sparse-dense and dense-dense matrix multiplication kernel in Triton.",
   "date": "2026-04-29",
   "readTime": "8 min read",
   "tags": [
@@ -55,8 +56,8 @@
     },
     {
       "type": "heading",
-      "id": "before-deriving-the-approach",
-      "text": "Before deriving the approach"
+      "id": "inspiration-from-flashattention",
+      "text": "Inspiration from FlashAttention"
     },
     {
       "type": "paragraph",
@@ -185,8 +186,8 @@
     },
     {
       "type": "heading",
-      "id": "defining-the-sparse-matrix-format",
-      "text": "Defining the sparse matrix format"
+      "id": "defining-the-custom-sparse-matrix-format",
+      "text": "Defining the custom sparse matrix format"
     },
     {
       "type": "image",
@@ -233,7 +234,7 @@
     {
       "type": "heading",
       "id": "implementation-details-in-triton-ncu-profiling",
-      "text": "Implementation details in triton + NCU profiling"
+      "text": "Implementation details in Triton + NCU profiling"
     },
     {
       "type": "image",
@@ -315,7 +316,7 @@
     {
       "type": "subheading",
       "id": "edge-case",
-      "text": "Edge case"
+      "text": "Edge case: Unbalanced sparsity"
     },
     {
       "type": "paragraph",
@@ -357,7 +358,7 @@
     {
       "type": "subheading",
       "id": "looping-k1-then-k2-or-vica-versa",
-      "text": "Looping K1 then K2 or vica versa"
+      "text": "Looping K1 then K2 or vice-versa"
     },
     {
       "type": "paragraph",

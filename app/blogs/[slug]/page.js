@@ -18,9 +18,11 @@ export const generateMetadata = ({ params }) => {
         };
     }
 
+    const metadataDescription = blog.descriptionBlog || blog.descriptionCard || blog.description;
+
     return {
         title: `${blog.title} | AB Portfolio Website`,
-        description: blog.description,
+        ...(metadataDescription ? { description: metadataDescription } : {}),
     };
 };
 

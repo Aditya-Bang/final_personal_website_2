@@ -241,6 +241,7 @@ const CodeBlock = ({ block }) => {
 const BlogArticle = ({ blog }) => {
     const outline = useMemo(() => buildOutline(blog.content), [blog.content]);
     const [isOutlineOpen, setIsOutlineOpen] = useState(true);
+    const blogDescription = blog.descriptionBlog || blog.description;
 
     const renderBlock = (block, index) => {
         if (block.type === 'paragraph') {
@@ -366,7 +367,7 @@ const BlogArticle = ({ blog }) => {
                             ))}
                         </div>
                         <h1 className="text-4xl font-bold text-white md:text-6xl">{blog.title}</h1>
-                        <p className="text-lg leading-8 text-gray-300">{blog.description}</p>
+                        {blogDescription && <p className="text-lg leading-8 text-gray-300">{blogDescription}</p>}
                         <p className="text-sm uppercase tracking-[0.2em] text-gray-500">
                             {blog.date} | {blog.readTime}
                         </p>

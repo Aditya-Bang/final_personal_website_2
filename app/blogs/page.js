@@ -21,33 +21,37 @@ const Blogs = () => {
                 </div>
 
                 <div className="mt-3 grid min-h-0 gap-5 overflow-auto pr-4 scrollbar md:grid-cols-2 xl:grid-cols-3">
-                    {blogs.map((blog) => (
-                        <Link
-                            key={blog.slug}
-                            href={`/blogs/${blog.slug}`}
-                            className="group flex h-full flex-col rounded-xl border border-[#3b426b] bg-slate-950 p-5 transition-colors hover:border-blue-400 hover:bg-slate-900"
-                        >
-                            <div className="flex flex-wrap gap-2">
-                                {blog.tags.map((tag) => (
-                                    <span key={tag} className="rounded-full border border-blue-400/50 px-3 py-1 text-xs uppercase tracking-wide text-blue-200">
-                                        {tag}
-                                    </span>
-                                ))}
-                            </div>
+                    {blogs.map((blog) => {
+                        const cardDescription = blog.descriptionCard || blog.description;
 
-                            <div className="mt-5 flex grow flex-col gap-3">
-                                <h2 className="text-2xl font-bold text-white transition-colors group-hover:text-blue-200">
-                                    {blog.title}
-                                </h2>
-                                <p className="leading-7 text-gray-400">{blog.description}</p>
-                            </div>
+                        return (
+                            <Link
+                                key={blog.slug}
+                                href={`/blogs/${blog.slug}`}
+                                className="group flex h-full flex-col rounded-xl border border-[#3b426b] bg-slate-950 p-5 transition-colors hover:border-blue-400 hover:bg-slate-900"
+                            >
+                                <div className="flex flex-wrap gap-2">
+                                    {blog.tags.map((tag) => (
+                                        <span key={tag} className="rounded-full border border-blue-400/50 px-3 py-1 text-xs uppercase tracking-wide text-blue-200">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
 
-                            <div className="mt-6 flex items-center justify-between border-t border-[#3b426b] pt-4 text-sm uppercase tracking-[0.2em] text-gray-500">
-                                <span>{blog.date}</span>
-                                <span>{blog.readTime}</span>
-                            </div>
-                        </Link>
-                    ))}
+                                <div className="mt-5 flex grow flex-col gap-3">
+                                    <h2 className="text-2xl font-bold text-white transition-colors group-hover:text-blue-200">
+                                        {blog.title}
+                                    </h2>
+                                    {cardDescription && <p className="leading-7 text-gray-400">{cardDescription}</p>}
+                                </div>
+
+                                <div className="mt-6 flex items-center justify-between border-t border-[#3b426b] pt-4 text-sm uppercase tracking-[0.2em] text-gray-500">
+                                    <span>{blog.date}</span>
+                                    <span>{blog.readTime}</span>
+                                </div>
+                            </Link>
+                        );
+                    })}
                 </div>
             </div>
         </div>
