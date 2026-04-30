@@ -65,7 +65,7 @@
           "href": "https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.conv.GCNConv.html"
         },
         {
-          "text": ", which, when stripped down to its core operations, is $A\\,X\\,W$, where $A$ is the sparse adjacency matrix of the graph, $X$ is the matrix of input embeddings for the graph, and $W$ is the weights matrix."
+          "text": ", which, when stripped down to its core operations, is $A\\,X\\,W$, where `A` is the sparse adjacency matrix of the graph, `X` is the matrix of input embeddings for the graph, and `W` is the weights matrix."
         }
       ]
     },
@@ -114,7 +114,7 @@
       "type": "paragraph",
       "parts": [
         {
-          "text": "Note that in this setup, each program in Triton computes a $BLOCK\\_ROW \\times d_{model}$ block of output. For this to be optimal, $d_{model}$ needs to be relatively small or bounded compared to sequence length, which can grow without bound, so that blocks fit in shared memory, etc. I realized a similar approach can be applied to sparse-dense and dense-dense matrix multiplication, where for a general problem of multiplying matrices $A$, $B$, and $C$, where $A$ is $N \\times K1$, $B$ is $K1 \\times K2$, and $C$ is $K2 \\times N$, we can make the $M$ and $K1$ dimensions small by only considering rows and columns that are non-zero in the row block. I will go further in depth on this in the next sections."
+          "text": "Note that in this setup, each program in Triton computes a $BLOCK\\_ROW \\times d_{model}$ block of output. For this to be optimal, $d_{model}$ needs to be relatively small or bounded compared to sequence length, which can grow without bound, so that blocks fit in shared memory, etc. I realized a similar approach can be applied to sparse-dense and dense-dense matrix multiplication, where for a general problem of multiplying matrices `A`, `B`, and `C`, where `A` is $N \\times K1$, `B` is $K1 \\times K2$, and `C` is $K2 \\times N$, we can make the `M` and `K1` dimensions small by only considering rows and columns that are non-zero in the row block. I will go further in depth on this in the next sections."
         }
       ]
     },
@@ -174,7 +174,7 @@
       "type": "paragraph",
       "parts": [
         {
-          "text": "So now, we can use this new matrix format, where if we assume that for any given row block, the number of non-zero columns is small, denote this value $K1(i)$ for row block $i$, then each program computes a $BLOCK\\_M \\times N$ chunk of the output matrix, and loops over"
+          "text": "So now, we can use this new matrix format, where if we assume that for any given row block, the number of non-zero columns is small, denote this value $K1(i)$ for row block `i`, then each program computes a $BLOCK\\_M \\times N$ chunk of the output matrix, and loops over"
         }
       ]
     },
@@ -188,7 +188,7 @@
       "type": "paragraph",
       "parts": [
         {
-          "text": "Note that in Triton we cannot have an arbitrary block size, e.g. load a $BLOCK\\_M \\times K1(i)$ block of `bsr.values_rm`, since `tl.arange` must have a power-of-2 constant end. So we add some complexity compared to FlashAttention by adding $K1$-dimension blocks, but the idea is that sparsity should be evenly distributed, so each Triton program does close to the same amount of work, i.e. the same number of loops over the $K1$ dimension, because each row block of matrix $A$ has roughly the same number of non-zero rows. With this, we are finally ready to implement the kernel:"
+          "text": "Note that in Triton we cannot have an arbitrary block size, e.g. load a $BLOCK\\_M \\times K1(i)$ block of `bsr.values_rm`, since `tl.arange` must have a power-of-2 constant end. So we add some complexity compared to FlashAttention by adding `K1`-dimension blocks, but the idea is that sparsity should be evenly distributed, so each Triton program does close to the same amount of work, i.e. the same number of loops over the `K1` dimension, because each row block of matrix `A` has roughly the same number of non-zero rows. With this, we are finally ready to implement the kernel:"
         }
       ]
     },
@@ -250,7 +250,7 @@
       "type": "paragraph",
       "parts": [
         {
-          "text": "Another consideration is which dimension we should loop over first: $K1$ or $K2$."
+          "text": "Another consideration is which dimension we should loop over first: `K1` or `K2`."
         }
       ]
     },
@@ -258,6 +258,7 @@
       "type": "code",
       "id": "looping-k1-then-k2",
       "language": "python",
+      "textSize": "2xs",
       "caption": "Looping over K1, K2 dims respectively.",
       "code": "for k1_block in tl.range(0, K1_TILE_M, BLOCK_K1):\n    # ------------------- Compute K1 block indices and offsets -------------------\n    offs_k1_adjm = k1_block + tl.arange(0, BLOCK_K1) # will be masked by K1_TILE_M\n    offs_adjm_bsr_cols = k1_block + tl.arange(0, BLOCK_K1) # indexes we want to read from BSR col indices, will be masked by K1_TILE_M, need this because arange needs constant end value\n    offs_k1_x = tl.load(bsr_col_ptr + tile_m_crow + offs_adjm_bsr_cols, mask=offs_adjm_bsr_cols < K1_TILE_M, other=0)\n    \n    # ------------------- Load adjm values -------------------\n    adjm_values_ptrs = (\n        bsr_values_ptr\n        + tile_m_adjm_bsr_values_offs\n        + offs_m_adjm[:, None] * K1_TILE_M\n        + offs_k1_adjm[None, :] * 1 # all contiguous in row major order\n    )\n    adjm_values_mask = (offs_m[:, None] < M) & (offs_k1_adjm[None, :] < K1_TILE_M)\n    adjm_values = tl.load(adjm_values_ptrs, mask=adjm_values_mask, other=0.0)\n\n    # ------------------- Loop over K2 blocks -------------------\n    for k2_block in range(0, K2, BLOCK_K2):\n        # ------------------- Compute K2 block indices and offsets -------------------\n        offs_k2 = (k2_block + tl.arange(0, BLOCK_K2))\n        \n        # ------------------- Load x values -------------------\n        x_ptrs = (\n            x_ptr\n            + offs_k1_x[:, None] * sx_k1\n            + offs_k2[None, :] * sx_k2\n        )\n        x_mask = (offs_adjm_bsr_cols[:, None] < K1_TILE_M) & (offs_k1_x[:, None] < K1) & (offs_k2[None, :] < K2)\n        x_values = tl.load(x_ptrs, mask=x_mask, other=0.0)\n        \n        # ------------------- Load weights values -------------------\n        w_ptrs = (\n            w_ptr\n            + offs_k2[:, None] * sw_k2\n            + offs_n[None, :] * sw_n\n        )\n        w_mask = (offs_k2[:, None] < K2) & (offs_n[None, :] < N)\n        w_values = tl.load(w_ptrs, mask=w_mask, other=0.0)\n        \n        # ------------------- Compute GEMM -------------------\n        acc1 = tl.zeros((BLOCK_M, BLOCK_K2), dtype=tl.float32)\n        acc1 = tl.dot(adjm_values, x_values, acc=acc1, input_precision=\"ieee\", out_dtype=tl.float32)\n        acc2 = tl.dot(acc1.to(w_values.dtype), w_values, acc=acc2, input_precision=\"ieee\", out_dtype=tl.float32)"
     },
@@ -265,6 +266,7 @@
       "type": "code",
       "id": "looping-k2-then-k1",
       "language": "python",
+      "textSize": "2xs",
       "caption": "Looping over K2, K1 dims respectively.",
       "code": "for k2_block in range(0, K2, BLOCK_K2):\n    # ------------------- Compute K2 block indices and offsets -------------------\n    offs_k2 = (k2_block + tl.arange(0, BLOCK_K2))\n    \n    # ------------------- Load weights values -------------------\n    w_ptrs = (\n        w_ptr\n        + offs_k2[:, None] * sw_k2\n        + offs_n[None, :] * sw_n\n    )\n    w_mask = (offs_k2[:, None] < K2) & (offs_n[None, :] < N)\n    w_values = tl.load(w_ptrs, mask=w_mask, other=0.0)\n\n    # ------------------- Loop over K1 blocks -------------------\n    # Can create asymmetric work across block M, but hopefully this is okay since lot of block Ms exist since M typically large.\n    for k1_block in tl.range(0, K1_TILE_M, BLOCK_K1):\n        # ------------------- Compute K1 block indices and offsets -------------------\n        offs_k1_adjm = k1_block + tl.arange(0, BLOCK_K1) # will be masked by K1_TILE_M\n        offs_adjm_bsr_cols = k1_block + tl.arange(0, BLOCK_K1) # indexes we want to read from BSR col indices, will be masked by K1_TILE_M, need this because arange needs constant end value\n        offs_k1_x = tl.load(bsr_col_ptr + tile_m_crow + offs_adjm_bsr_cols, mask=offs_adjm_bsr_cols < K1_TILE_M, other=0)\n        \n        # ------------------- Load adjm values -------------------\n        adjm_values_ptrs = (\n            bsr_values_ptr\n            + tile_m_adjm_bsr_values_offs\n            + offs_m_adjm[:, None] * K1_TILE_M\n            + offs_k1_adjm[None, :] * 1 # all contiguous in row major order\n        )\n        adjm_values_mask = (offs_m[:, None] < M) & (offs_k1_adjm[None, :] < K1_TILE_M)\n        adjm_values = tl.load(adjm_values_ptrs, mask=adjm_values_mask, other=0.0)\n        \n        # ------------------- Load x values -------------------\n        x_ptrs = (\n            x_ptr\n            + offs_k1_x[:, None] * sx_k1\n            + offs_k2[None, :] * sx_k2\n        )\n        x_mask = (offs_adjm_bsr_cols[:, None] < K1_TILE_M) & (offs_k1_x[:, None] < K1) & (offs_k2[None, :] < K2)\n        x_values = tl.load(x_ptrs, mask=x_mask, other=0.0)\n        \n        # ------------------- Compute GEMM -------------------\n        acc1 = tl.zeros((BLOCK_M, BLOCK_K2), dtype=tl.float32)\n        acc1 = tl.dot(adjm_values, x_values, acc=acc1, input_precision=\"ieee\", out_dtype=tl.float32)\n        acc2 = tl.dot(acc1.to(w_values.dtype), w_values, acc=acc2, input_precision=\"ieee\", out_dtype=tl.float32)"
     },
@@ -272,9 +274,24 @@
       "type": "paragraph",
       "parts": [
         {
-          "text": "The difference between the two is that when looping over $K1$ and then $K2$, we can load the adjacency matrix once per $K1$ loop iteration. On the other hand, when looping over $K2$ and then $K1$, we can load weights once per $K1$ loop iteration. Profiling shows … (add profile here TODO), and logically this makes sense because … (TODO). Hence we should loop over $K1$ and then $K2$."
+          "text": "The difference between the two loop orders is what gets kept outside the inner loop. When looping over `K1` and then `K2`, we load the BSR column indices and adjacency values once per `K1` block and reuse them across the `K2` loop. When switching the order, we instead reuse the weight tile across `K1`, but repeatedly fetch the sparse column indices and the sparse values inside the inner loop."
         }
       ]
+    },
+    {
+      "type": "paragraph",
+      "parts": [
+        {
+          "text": "The profile suggests this extra work is the problem. The regular kernel executes far fewer instructions and its busiest pipeline is the Tensor pipeline, while the switched-loop kernel executes many more instructions and is dominated by ALU work:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "id": "loop-order-ncu-profile",
+      "language": "text",
+      "wrapText": true,
+      "code": "Regular kernel (K1 outer, K2 inner)\n-----------------------------------\nCompute Workload Analysis:\n    Tensor is the highest-utilized pipeline (22.0%) ...\n\nInstruction Statistics:\n    Executed Instructions                           803,584\n\n\nSwitched-loop kernel (K2 outer, K1 inner)\n-----------------------------------------\nCompute Workload Analysis:\n    ALU is the highest-utilized pipeline (20.7%) ...\n    It executes integer and logic operations.\n\nInstruction Statistics:\n    Executed Instructions                         2,663,424"
     },
     {
       "type": "subheading",
@@ -285,7 +302,7 @@
       "type": "paragraph",
       "parts": [
         {
-          "text": "Profiling shows that (TODO). This is because memory is not 128-bit aligned, so certain low-level ops are unable to be optimized, such as 128-bit memory accesses. More concretely, when the $K2$ dimension is padded to a multiple of 16, loads and stores become much easier for the compiler and hardware to vectorize cleanly. For FP16 values, 16 elements correspond to 32 bytes, which lines up well with the access granularity that GPUs like to see for coalesced memory transactions. Even when the exact transaction size depends on the instruction and cache path, having the inner dimension aligned means contiguous threads in a warp are much more likely to access memory in a regular pattern."
+          "text": "Profiling shows that (TODO). This is because memory is not 128-bit aligned, so certain low-level ops are unable to be optimized, such as 128-bit memory accesses. More concretely, when the `K2` dimension is padded to a multiple of 16, loads and stores become much easier for the compiler and hardware to vectorize cleanly. For FP16 values, 16 elements correspond to 32 bytes, which lines up well with the access granularity that GPUs like to see for coalesced memory transactions. Even when the exact transaction size depends on the instruction and cache path, having the inner dimension aligned means contiguous threads in a warp are much more likely to access memory in a regular pattern."
         }
       ]
     },

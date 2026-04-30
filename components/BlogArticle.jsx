@@ -48,6 +48,46 @@ const findInlineMathDelimiter = (text, startIndex) => {
     return -1;
 };
 
+const findBacktick = (text, startIndex) => {
+    for (let index = startIndex; index < text.length; index += 1) {
+        if (text[index] === '`' && !isEscaped(text, index)) {
+            return index;
+        }
+    }
+
+    return -1;
+};
+
+const splitInlineBackticks = (text) => {
+    const segments = [];
+    let cursor = 0;
+
+    while (cursor < text.length) {
+        const open = findBacktick(text, cursor);
+
+        if (open === -1) {
+            segments.push({ type: 'text', text: text.slice(cursor) });
+            break;
+        }
+
+        const close = findBacktick(text, open + 1);
+
+        if (close === -1) {
+            segments.push({ type: 'text', text: text.slice(cursor) });
+            break;
+        }
+
+        if (open > cursor) {
+            segments.push({ type: 'text', text: text.slice(cursor, open) });
+        }
+
+        segments.push({ type: 'code', text: text.slice(open + 1, close) });
+        cursor = close + 1;
+    }
+
+    return segments;
+};
+
 const splitInlineMath = (text) => {
     const segments = [];
     let cursor = 0;
@@ -106,6 +146,9 @@ const MathBlock = ({ block }) => (
     </figure>
 );
 
+const inlineCodeClassName =
+    'rounded-md border border-slate-600/80 bg-slate-700/50 px-1.5 py-0.5 font-mono text-[0.9em] font-semibold text-blue-100';
+
 const renderTextWithMath = (text, keyPrefix) => (
     splitInlineMath(text).map((segment, index) => {
         if (segment.type === 'math') {
@@ -115,6 +158,21 @@ const renderTextWithMath = (text, keyPrefix) => (
         return <span key={`${keyPrefix}-text-${index}`}>{segment.text.replace(/\\\$/g, '$')}</span>;
     })
 );
+
+const renderInlineParagraphText = (text, keyPrefix) =>
+    splitInlineBackticks(text).flatMap((segment, segIndex) => {
+        const segKey = `${keyPrefix}-bt-${segIndex}`;
+
+        if (segment.type === 'code') {
+            return [
+                <code key={`${segKey}-code`} className={inlineCodeClassName}>
+                    {segment.text}
+                </code>,
+            ];
+        }
+
+        return renderTextWithMath(segment.text, segKey);
+    });
 
 const InlineText = ({ parts }) => (
     <>
@@ -132,12 +190,12 @@ const InlineText = ({ parts }) => (
                         rel="noreferrer"
                         className="text-blue-300 underline decoration-blue-400/60 underline-offset-4 transition-colors hover:text-blue-200"
                     >
-                        {renderTextWithMath(part.text, `link-${index}`)}
+                        {renderInlineParagraphText(part.text, `link-${index}`)}
                     </a>
                 );
             }
 
-            return renderTextWithMath(part.text, `text-${index}`);
+            return renderInlineParagraphText(part.text, `text-${index}`);
         })}
     </>
 );
@@ -367,7 +425,9 @@ const BlogArticle = ({ blog }) => {
                             ))}
                         </div>
                         <h1 className="text-4xl font-bold text-white md:text-6xl">{blog.title}</h1>
-                        {blogDescription && <p className="text-base leading-7 text-gray-300">{blogDescription}</p>}
+                        {blogDescription && (
+                            <p className="text-base leading-7 text-gray-300">{renderInlineParagraphText(blogDescription, 'blog-desc')}</p>
+                        )}
                         <p className="text-sm uppercase tracking-[0.2em] text-gray-500">
                             {blog.date} | {blog.readTime}
                         </p>
