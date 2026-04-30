@@ -2,7 +2,29 @@ import React from 'react'
 import Image from 'next/image';
 import { FaExternalLinkAlt } from "react-icons/fa";
 
+/** @returns {{ link: string, label: string } | null} */
+function normalizeDemo(demo) {
+    if (demo == null) return null;
+    if (typeof demo === 'string') {
+        const link = demo.trim();
+        return link ? { link, label: 'Demo' } : null;
+    }
+    if (typeof demo === 'object' && demo.link) {
+        const link = String(demo.link).trim();
+        if (!link) return null;
+        const label = typeof demo.label === 'string' && demo.label.trim() ? demo.label.trim() : 'Demo';
+        return { link, label };
+    }
+    return null;
+}
+
+/** Root-relative or same-origin path → stays on site when domain changes */
+function isSiteRelativeLink(href) {
+    return href.startsWith('/') && !href.startsWith('//');
+}
+
 const ProjectCard2 = (props) => {
+    const demo = normalizeDemo(props.demo);
     return (
         <div className='flex flex-col w-[250px] h-[400px] z-20 relative rounded-lg bg-gray-800 border border-gray-600'>
             <div className='w-full h-[120px] overflow-hidden rounded-t-lg relative'>
@@ -27,12 +49,18 @@ const ProjectCard2 = (props) => {
                 </a>
             )}
             
-            {props.demo ?
-                <a href={props.demo} target="_blank" className="inline-flex items-center p-2 text-sm text-center text-white rounded-lg  focus:ring-4 focus:outline-none bg-blue-600 hover:bg-blue-700 focus:ring-blue-800 absolute top-0 left-0 m-1">
-                    {props.isPaper ? "Paper" : "Demo"}&nbsp;
+            {demo ? (
+                <a
+                    href={demo.link}
+                    {...(isSiteRelativeLink(demo.link)
+                        ? {}
+                        : { target: '_blank', rel: 'noopener noreferrer' })}
+                    className="inline-flex items-center p-2 text-sm text-center text-white rounded-lg  focus:ring-4 focus:outline-none bg-blue-600 hover:bg-blue-700 focus:ring-blue-800 absolute top-0 left-0 m-1"
+                >
+                    {demo.label}&nbsp;
                     <FaExternalLinkAlt />
-                </a> : null
-            }
+                </a>
+            ) : null}
             <div className='flex flex-col items-center w-full justify-center p-3 gap-2'>
                 <div className="w-full text-xl text-white">{props.name}</div>
 
