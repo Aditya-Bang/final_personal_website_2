@@ -145,6 +145,7 @@ const InlineText = ({ parts }) => (
 const CodeBlock = ({ block }) => {
     const [copied, setCopied] = useState(false);
     const language = block.language === 'c++' ? 'cpp' : block.language;
+    const wrapText = block.wrapText === true;
 
     const copyCode = async () => {
         await navigator.clipboard.writeText(block.code);
@@ -167,15 +168,19 @@ const CodeBlock = ({ block }) => {
             <SyntaxHighlighter
                 language={language}
                 style={oneDark}
+                wrapLongLines={wrapText}
                 customStyle={{
                     margin: 0,
                     padding: '1rem',
                     background: 'transparent',
+                    overflowX: wrapText ? 'visible' : 'auto',
                 }}
                 codeTagProps={{
                     style: {
                         fontSize: '0.875rem',
                         lineHeight: '1.75rem',
+                        whiteSpace: wrapText ? 'pre-wrap' : 'pre',
+                        wordBreak: wrapText ? 'break-word' : 'normal',
                     },
                 }}
                 className="scrollbar"
@@ -193,6 +198,7 @@ const CodeBlock = ({ block }) => {
 
 const BlogArticle = ({ blog }) => {
     const outline = useMemo(() => buildOutline(blog.content), [blog.content]);
+    const [isOutlineOpen, setIsOutlineOpen] = useState(true);
 
     const renderBlock = (block, index) => {
         if (block.type === 'paragraph') {
@@ -248,40 +254,63 @@ const BlogArticle = ({ blog }) => {
     };
 
     return (
-        <div className="grid h-full min-h-0 gap-5 lg:grid-cols-[280px_minmax(0,1fr)]">
-            <aside className="hidden rounded-lg border border-[#3b426b] bg-gray-900 p-4 text-gray-300 scrollbar lg:sticky lg:top-0 lg:block lg:h-full lg:overflow-auto">
-                <Link href="/blogs" className="text-sm text-blue-300 transition-colors hover:text-blue-200">
-                    Back to blogs
-                </Link>
-
-                <div className="mt-5 flex flex-row items-center justify-center gap-3">
-                    <div className="h-[1px] flex-grow rounded-full bg-[#3b426b]"></div>
-                    <p className="text-lg uppercase text-white">On This Page</p>
-                    <div className="h-[1px] flex-grow rounded-full bg-[#3b426b]"></div>
+        <div className={`grid h-full min-h-0 gap-5 ${isOutlineOpen ? 'lg:grid-cols-[280px_minmax(0,1fr)]' : 'lg:grid-cols-[72px_minmax(0,1fr)]'}`}>
+            <aside className={`hidden min-h-0 rounded-lg border border-[#3b426b] bg-gray-900 text-gray-300 transition-all lg:sticky lg:top-0 lg:flex lg:h-full lg:flex-col lg:overflow-visible ${isOutlineOpen ? 'p-4' : 'p-3'}`}>
+                <div className={`flex items-start ${isOutlineOpen ? 'justify-between gap-3' : 'justify-center'}`}>
+                    {isOutlineOpen && (
+                        <Link href="/blogs" className="text-sm text-blue-300 transition-colors hover:text-blue-200">
+                            Back to blogs
+                        </Link>
+                    )}
+                    <div className="group relative">
+                        <button
+                            type="button"
+                            onClick={() => setIsOutlineOpen((current) => !current)}
+                            aria-label={isOutlineOpen ? 'Collapse menu' : 'Expand menu'}
+                            aria-expanded={isOutlineOpen}
+                            aria-controls="blog-outline-nav"
+                            className="flex h-8 w-8 items-center justify-center rounded-full border border-[#3b426b] text-blue-100 transition-colors hover:border-blue-400 hover:bg-slate-800 hover:text-white"
+                        >
+                            <span aria-hidden="true">{isOutlineOpen ? '<' : '>'}</span>
+                        </button>
+                        <span className={`pointer-events-none absolute top-1/2 z-[9999] hidden -translate-y-1/2 whitespace-nowrap rounded-md border border-[#3b426b] bg-slate-950 px-2 py-1 text-xs text-gray-300 shadow-lg group-hover:block ${isOutlineOpen ? 'right-10' : 'left-10'}`}>
+                            {isOutlineOpen ? 'Collapse menu' : 'Expand menu'}
+                        </span>
+                    </div>
                 </div>
 
-                <nav className="mt-5">
-                    <ul className="space-y-4 border-l border-[#3b426b] pl-4">
-                        {outline.map((item) => (
-                            <li key={item.id}>
-                                <a href={`#${item.id}`} className="block text-blue-200 transition-colors hover:text-white">
-                                    {item.text}
-                                </a>
-                                {item.children.length > 0 && (
-                                    <ul className="mt-3 space-y-2 border-l border-slate-700 pl-4">
-                                        {item.children.map((child) => (
-                                            <li key={child.id}>
-                                                <a href={`#${child.id}`} className="block text-sm text-gray-400 transition-colors hover:text-blue-200">
-                                                    {child.text}
-                                                </a>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
-                            </li>
-                        ))}
-                    </ul>
-                </nav>
+                {isOutlineOpen && (
+                    <>
+                        <div className="mt-5 flex flex-row items-center justify-center gap-3">
+                            <div className="h-[1px] flex-grow rounded-full bg-[#3b426b]"></div>
+                            <p className="whitespace-nowrap text-lg uppercase text-white">On This Page</p>
+                            <div className="h-[1px] flex-grow rounded-full bg-[#3b426b]"></div>
+                        </div>
+
+                        <nav id="blog-outline-nav" className="mt-5 min-h-0 overflow-auto scrollbar">
+                            <ul className="space-y-4 border-l border-[#3b426b] pl-4">
+                                {outline.map((item) => (
+                                    <li key={item.id}>
+                                        <a href={`#${item.id}`} className="block text-blue-200 transition-colors hover:text-white">
+                                            {item.text}
+                                        </a>
+                                        {item.children.length > 0 && (
+                                            <ul className="mt-3 space-y-2 border-l border-slate-700 pl-4">
+                                                {item.children.map((child) => (
+                                                    <li key={child.id}>
+                                                        <a href={`#${child.id}`} className="block text-sm text-gray-400 transition-colors hover:text-blue-200">
+                                                            {child.text}
+                                                        </a>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                    </li>
+                                ))}
+                            </ul>
+                        </nav>
+                    </>
+                )}
             </aside>
 
             <article className="min-h-0 overflow-auto rounded-lg border border-[#3b426b] bg-gray-900 p-5 text-gray-300 scrollbar md:p-8">
@@ -301,19 +330,23 @@ const BlogArticle = ({ blog }) => {
                         </p>
                     </div>
 
-                    <figure className="overflow-hidden rounded-xl border border-[#3b426b] bg-slate-950">
-                        <Image
-                            src={blog.heroImage.src}
-                            width={960}
-                            height={540}
-                            alt={blog.heroImage.alt}
-                            priority
-                            className="h-auto w-full"
-                        />
-                        <figcaption className="border-t border-[#3b426b] px-4 py-3 text-sm text-gray-400">
-                            {blog.heroImage.caption}
-                        </figcaption>
-                    </figure>
+                    {blog.heroImage && (
+                        <figure className="overflow-hidden rounded-xl border border-[#3b426b] bg-slate-950">
+                            <Image
+                                src={blog.heroImage.src}
+                                width={960}
+                                height={540}
+                                alt={blog.heroImage.alt}
+                                priority
+                                className="h-auto w-full"
+                            />
+                            {blog.heroImage.caption && (
+                                <figcaption className="border-t border-[#3b426b] px-4 py-3 text-sm text-gray-400">
+                                    {blog.heroImage.caption}
+                                </figcaption>
+                            )}
+                        </figure>
+                    )}
 
                     <div className="flex flex-col gap-6">
                         {blog.content.map(renderBlock)}

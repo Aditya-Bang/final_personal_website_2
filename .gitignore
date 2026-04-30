@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
+.venv/
 
 # testing
 /coverage
@@ -37,3 +38,8 @@ next-env.d.ts
 
 # Extra Notes
 cpsnipets.txt
+scripts/json_string_input.txt
+scripts/json_string_output.txt
+
+# VS Code
+.vscode
