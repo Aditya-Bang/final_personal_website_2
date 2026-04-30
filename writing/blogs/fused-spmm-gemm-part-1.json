@@ -65,7 +65,7 @@
           "href": "https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.conv.GCNConv.html"
         },
         {
-          "text": ", which, when stripped down to its core operations, is $A\\,X\\,W$, where `A` is the sparse adjacency matrix of the graph, `X` is the matrix of input embeddings for the graph, and `W` is the weights matrix."
+          "text": ", which, when stripped down to its core operations, is $A\\,X\\,W$, where `A` is the sparse adjacency matrix of the graph, `X` is the matrix of input embeddings for the graph, and `W` is the weight matrix."
         }
       ]
     },
@@ -100,21 +100,21 @@
           "href": "https://arxiv.org/pdf/2307.08691"
         },
         {
-          "text": ", which, when you drop the online softmax, fuses matrix multiplication between matrices of shape $N \\times d_{model}$, $d_{model} \\times N$, and $N \\times d_{model}$."
+          "text": ", which, when you drop the online softmax, fuses a chain of matrix multiplications among matrices of shapes $N \\times d_{model}$, $d_{model} \\times N$, and $N \\times d_{model}$."
         }
       ]
     },
     {
       "type": "image",
       "src": "/blogs/fused-spmm-gemm-part-1/1-flash-attn.png",
-      "alt": "Flash attention fused matrix multiplication",
+      "alt": "FlashAttention fused matrix multiplication",
       "caption": "Image 1: FlashAttention fused matrix multiplication."
     },
     {
       "type": "paragraph",
       "parts": [
         {
-          "text": "Note that in this setup, each program in Triton computes a $BLOCK\\_ROW \\times d_{model}$ block of output. For this to be optimal, $d_{model}$ needs to be relatively small or bounded compared to sequence length, which can grow without bound, so that blocks fit in shared memory, etc. I realized a similar approach can be applied to sparse-dense and dense-dense matrix multiplication, where for a general problem of multiplying matrices `A`, `B`, and `C`, where `A` is $N \\times K1$, `B` is $K1 \\times K2$, and `C` is $K2 \\times N$, we can make the `M` and `K1` dimensions small by only considering rows and columns that are non-zero in the row block. I will go further in depth on this in the next sections."
+          "text": "Note that in this setup, each program in Triton computes a $BLOCK\\_ROW \\times d_{model}$ block of output. For this to be optimal, $d_{model}$ needs to be relatively small or bounded compared to sequence length, which can grow without bound, so that blocks fit in shared memory, etc. I realized a similar approach can be applied to sparse-dense and dense-dense matrix multiplication. In the general problem of multiplying three matrices `A`, `B`, and `C`, where `A` is $N \\times K1$, `B` is $K1 \\times K2$, and `C` is $K2 \\times N$, we can make the `M` and `K1` dimensions small by only considering rows and columns that are non-zero in the row block. I will go into more depth on this in the next sections."
         }
       ]
     },
@@ -174,7 +174,7 @@
       "type": "paragraph",
       "parts": [
         {
-          "text": "So now, we can use this new matrix format, where if we assume that for any given row block, the number of non-zero columns is small, denote this value $K1(i)$ for row block `i`, then each program computes a $BLOCK\\_M \\times N$ chunk of the output matrix, and loops over"
+          "text": "So now, we can use this new matrix format, where if we assume that for any given row block, the number of non-zero columns is small, denote this value $K1(i)$ for row block `i`, then each program computes a $BLOCK\\_M \\times N$ chunk of the output matrix, and loops over the sparse $K1$ dimension in blocks of size `BLOCK_K1`."
         }
       ]
     },
@@ -188,7 +188,7 @@
       "type": "paragraph",
       "parts": [
         {
-          "text": "Note that in Triton we cannot have an arbitrary block size, e.g. load a $BLOCK\\_M \\times K1(i)$ block of `bsr.values_rm`, since `tl.arange` must have a power-of-2 constant end. So we add some complexity compared to FlashAttention by adding `K1`-dimension blocks, but the idea is that sparsity should be evenly distributed, so each Triton program does close to the same amount of work, i.e. the same number of loops over the `K1` dimension, because each row block of matrix `A` has roughly the same number of non-zero rows. With this, we are finally ready to implement the kernel:"
+          "text": "Note that in Triton we cannot have an arbitrary block size, e.g. load a $BLOCK\\_M \\times K1(i)$ block of `bsr.values_rm`, since `tl.arange` must have a power-of-2 constant end. So we add some complexity compared to FlashAttention by adding `K1`-dimension blocks, but the idea is that sparsity should be evenly distributed, so each Triton program does close to the same amount of work, i.e. the same number of loops over the `K1` dimension, because each row block of matrix `A` has roughly the same number of non-zero columns. With this, we are finally ready to implement the kernel:"
         }
       ]
     },
@@ -244,8 +244,8 @@
     },
     {
       "type": "subheading",
-      "id": "looping-k1-then-k2-or-vica-versa",
-      "text": "Looping K1 then K2 or vice-versa"
+      "id": "looping-k1-then-k2-or-vice-versa",
+      "text": "Looping K1 then K2 or vice versa"
     },
     {
       "type": "paragraph",
@@ -297,7 +297,7 @@
     {
       "type": "subheading",
       "id": "padding-the-k2-dimension-to-be-multiple-of-16",
-      "text": "Padding the K2 dimension to be multiple of 16."
+      "text": "Padding the K2 dimension to be a multiple of 16"
     },
     {
       "type": "paragraph",
