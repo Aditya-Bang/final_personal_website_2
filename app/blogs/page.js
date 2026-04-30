@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
-import blogs from '../../writing/blogs.json';
+import blogs from '../../writing/blogs';
 
 export const metadata = {
     title: 'Blogs | AB Portfolio Website',

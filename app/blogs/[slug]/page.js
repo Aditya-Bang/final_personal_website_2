@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import BlogArticle from '@/components/BlogArticle';
-import blogs from '../../../writing/blogs.json';
+import blogs from '../../../writing/blogs';
 
 export const generateStaticParams = () => {
     return blogs.map((blog) => ({
