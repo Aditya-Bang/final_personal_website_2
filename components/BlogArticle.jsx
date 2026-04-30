@@ -144,8 +144,27 @@ const InlineText = ({ parts }) => (
 
 const CodeBlock = ({ block }) => {
     const [copied, setCopied] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
     const language = block.language === 'c++' ? 'cpp' : block.language;
     const wrapText = block.wrapText === true;
+    const collapseAfterLines = block.collapseAfterLines || 24;
+    const isCollapsible = block.collapsible !== false && block.code.split('\n').length > collapseAfterLines;
+    const shouldCollapse = isCollapsible && !isExpanded;
+    const codeTextStyles = {
+        sm: {
+            fontSize: '0.875rem',
+            lineHeight: '1.75rem',
+        },
+        xs: {
+            fontSize: '0.75rem',
+            lineHeight: '1.5rem',
+        },
+        '2xs': {
+            fontSize: '0.6875rem',
+            lineHeight: '1.375rem',
+        },
+    };
+    const codeTextStyle = codeTextStyles[block.textSize] || codeTextStyles.sm;
 
     const copyCode = async () => {
         await navigator.clipboard.writeText(block.code);
@@ -165,30 +184,53 @@ const CodeBlock = ({ block }) => {
                     {copied ? 'Copied' : 'Copy'}
                 </button>
             </div>
-            <SyntaxHighlighter
-                language={language}
-                style={oneDark}
-                wrapLongLines={wrapText}
-                customStyle={{
-                    margin: 0,
-                    padding: '1rem',
-                    background: 'transparent',
-                    overflowX: wrapText ? 'visible' : 'auto',
-                }}
-                codeTagProps={{
-                    style: {
-                        fontSize: '0.875rem',
-                        lineHeight: '1.75rem',
-                        whiteSpace: wrapText ? 'pre-wrap' : 'pre',
-                        wordBreak: wrapText ? 'break-word' : 'normal',
-                    },
-                }}
-                className="scrollbar"
-            >
-                {block.code}
-            </SyntaxHighlighter>
+            <div className={block.caption ? 'border-b border-[#3b426b]' : ''}>
+                <div className="relative">
+                    <div
+                        className="transition-[max-height]"
+                        style={{
+                            maxHeight: shouldCollapse ? (block.collapsedHeight || '28rem') : 'none',
+                            overflow: shouldCollapse ? 'hidden' : 'visible',
+                        }}
+                    >
+                        <SyntaxHighlighter
+                            language={language}
+                            style={oneDark}
+                            wrapLongLines={wrapText}
+                            customStyle={{
+                                margin: 0,
+                                padding: isCollapsible ? '1rem 1rem 4rem' : '1rem',
+                                background: 'transparent',
+                                overflowX: wrapText ? 'visible' : 'auto',
+                            }}
+                            codeTagProps={{
+                                style: {
+                                    ...codeTextStyle,
+                                    whiteSpace: wrapText ? 'pre-wrap' : 'pre',
+                                    wordBreak: wrapText ? 'break-word' : 'normal',
+                                },
+                            }}
+                            className="scrollbar"
+                        >
+                            {block.code}
+                        </SyntaxHighlighter>
+                    </div>
+                    {shouldCollapse && (
+                        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-slate-950 to-transparent" />
+                    )}
+                    {isCollapsible && (
+                        <button
+                            type="button"
+                            onClick={() => setIsExpanded((current) => !current)}
+                            className="absolute inset-x-0 bottom-6 z-10 mx-auto w-fit rounded-full border border-blue-400/70 bg-slate-950/95 px-3 py-1 text-sm text-blue-100 shadow-lg transition-colors hover:bg-blue-500 hover:text-white"
+                        >
+                            {isExpanded ? 'Show less' : 'Show more'}
+                        </button>
+                    )}
+                </div>
+            </div>
             {block.caption && (
-                <figcaption className="border-t border-[#3b426b] px-4 py-3 text-sm text-gray-400">
+                <figcaption className="px-4 py-3 text-sm text-gray-400">
                     {block.caption}
                 </figcaption>
             )}
