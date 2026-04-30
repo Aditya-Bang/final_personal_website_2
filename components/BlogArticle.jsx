@@ -246,7 +246,7 @@ const BlogArticle = ({ blog }) => {
     const renderBlock = (block, index) => {
         if (block.type === 'paragraph') {
             return (
-                <p key={`paragraph-${index}`} className="text-lg leading-8 text-gray-300">
+                <p key={`paragraph-${index}`} className="text-base leading-7 text-gray-300">
                     <InlineText parts={block.parts} />
                 </p>
             );
@@ -357,7 +357,7 @@ const BlogArticle = ({ blog }) => {
             </aside>
 
             <article className="min-h-0 overflow-auto rounded-lg border border-[#3b426b] bg-gray-900 p-5 text-gray-300 scrollbar md:p-8">
-                <div className="mx-auto flex max-w-4xl flex-col gap-6">
+                <div className="mx-auto flex max-w-5xl flex-col gap-6">
                     <div className="flex flex-col gap-4">
                         <div className="flex flex-wrap gap-2">
                             {blog.tags.map((tag) => (
@@ -367,7 +367,7 @@ const BlogArticle = ({ blog }) => {
                             ))}
                         </div>
                         <h1 className="text-4xl font-bold text-white md:text-6xl">{blog.title}</h1>
-                        {blogDescription && <p className="text-lg leading-8 text-gray-300">{blogDescription}</p>}
+                        {blogDescription && <p className="text-base leading-7 text-gray-300">{blogDescription}</p>}
                         <p className="text-sm uppercase tracking-[0.2em] text-gray-500">
                             {blog.date} | {blog.readTime}
                         </p>
