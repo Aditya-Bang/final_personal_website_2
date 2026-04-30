@@ -43,7 +43,7 @@
       "type": "paragraph",
       "parts": [
         {
-          "text": "This blog shows my journey optimizing a kernel that fuses a sparse-dense and dense-dense matrix multiplication. In this series, I first build the kernel in Triton, optimized for Ampere architecture. In part 2, I switch to CUDA C++ to learn the low-level implementation details that Triton abstracts away. Finally, in part 3, I switch to the CuTe DSL to optimize further for Hopper and Blackwell architectures. Link to "
+          "text": "This blog shows my journey optimizing a kernel that fuses a sparse-dense and dense-dense matrix multiplication. In this series, I first build the kernel in Triton, optimized for Ampere architecture. In Part 2, I switch to CUDA C++ to learn the low-level implementation details that Triton abstracts away. Finally, in Part 3, I switch to the CuTe DSL to optimize further for Hopper and Blackwell architectures. Link to "
         },
         {
           "text": "all code here",
@@ -564,7 +564,14 @@
       "type": "paragraph",
       "parts": [
         {
-          "text": "In the next blog post, I will try to implement the lower-level details of this kernel in CUDA C++, optimized specifically for Ampere architectures. See part 2 (TODO: add link to part 2 blog here)."
+          "text": "In the next blog post, I will try to implement the lower-level details of this kernel in CUDA C++, optimized specifically for Ampere architectures. See "
+        },
+        {
+          "text": "Part 2",
+          "href": "/blogs/fused-spmm-gemm-part-2"
+        },
+        {
+          "text": "."
         }
       ]
     }

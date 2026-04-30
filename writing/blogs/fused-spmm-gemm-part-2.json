@@ -1,0 +1,45 @@
+{
+  "slug": "fused-spmm-gemm-part-2",
+  "title": "Fusing Sparse-Dense and Dense-Dense Matrix Multiplication: Part 2",
+  "descriptionCard": "Continuing the fused SpMM-GEMM optimization series with lower-level CUDA implementation details.",
+  "descriptionBlog": "Continuing the fused SpMM-GEMM optimization series with lower-level CUDA implementation details.",
+  "date": "2026-04-29",
+  "readTime": "Coming soon",
+  "tags": [
+    "GPU",
+    "CUDA",
+    "Performance Optimization"
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "parts": [
+        {
+          "text": "Coming Soon..."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "parts": [
+        {
+          "text": "Previous: "
+        },
+        {
+          "text": "Part 1",
+          "href": "/blogs/fused-spmm-gemm-part-1"
+        },
+        {
+          "text": ". Next: "
+        },
+        {
+          "text": "Part 3",
+          "href": "/blogs/fused-spmm-gemm-part-3"
+        },
+        {
+          "text": "."
+        }
+      ]
+    }
+  ]
+}
