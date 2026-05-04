@@ -23,6 +23,21 @@
       "type": "paragraph",
       "parts": [
         {
+          "text": "In the meanwhile, you can view the CUDA source code "
+        },
+        {
+          "text": "here",
+          "href": "https://github.com/Aditya-Bang/GraphCUDA/tree/main/csrc"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "parts": [
+        {
           "text": "Previous: "
         },
         {
