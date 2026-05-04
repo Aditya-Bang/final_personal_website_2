@@ -1,6 +1,6 @@
 {
   "slug": "fused-spmm-gemm-part-2",
-  "title": "Fusing Sparse-Dense and Dense-Dense Matrix Multiplication: Part 2",
+  "title": "GraphCUDA: Fusing Sparse-Dense and Dense-Dense Matrix Multiplication (Part 2)",
   "descriptionCard": "Continuing the fused SpMM-GEMM optimization series with lower-level CUDA implementation details.",
   "descriptionBlog": "Continuing the fused SpMM-GEMM optimization series with lower-level CUDA implementation details.",
   "date": "2026-04-29",

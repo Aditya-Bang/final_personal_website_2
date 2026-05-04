@@ -1,6 +1,6 @@
 {
   "slug": "fused-spmm-gemm-part-1",
-  "title": "Fusing Sparse-Dense and Dense-Dense Matrix Multiplication: Part 1",
+  "title": "GraphCUDA: Fusing Sparse-Dense and Dense-Dense Matrix Multiplication (Part 1)",
   "descriptionCard": "Optimizing a fused sparse-dense and dense-dense matrix multiplication kernel in Triton.",
   "date": "2026-04-29",
   "readTime": "8 min read",
